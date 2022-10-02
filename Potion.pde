@@ -1,4 +1,5 @@
-class LeeSoyoung_Potion{
+//Owner: LeeSoyoung
+class Potion{
   String randomColor;
   char randomKey;
   float x, y, appearProb, keyProb, theta = 0, potionSize = 150;
@@ -10,7 +11,7 @@ class LeeSoyoung_Potion{
   
   void setRandom(){
     x = random(70, width-70);
-    y = random(100, height-70);
+    y = random(200, height-70);
     appearProb = random(1);
     keyProb = random(1);
     
@@ -18,10 +19,10 @@ class LeeSoyoung_Potion{
       potionIMG = loadImage("redPotion144dpi.png");
       randomColor = "RED";
     }else if(appearProb < 0.666){
-      potionIMG = loadImage("greenPotion.png");
+      potionIMG = loadImage("greenPotion144dpi.png");
       randomColor = "GREEN";
     }else{
-      potionIMG = loadImage("bluePotion.png");
+      potionIMG = loadImage("bluePotion144dpi.png");
       randomColor = "BLUE";
     }
     
