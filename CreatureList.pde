@@ -1,4 +1,5 @@
 PImage creatureList;
+boolean shouldList = false;
 
 void setList(){
   background(255);

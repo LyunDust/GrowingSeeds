@@ -1,3 +1,4 @@
+// for the test
 int[] potionCount = {10, 15, 5};
 
 void setEndingScreen(){
@@ -17,10 +18,6 @@ void setEndingScreen(){
 
 void drawEndingScreen(){
   drawCreature(creatureNumber);
-  
-  if (shouldList == true){
-    setList();
-  }
 }
 
 void creatureEnding(){

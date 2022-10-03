@@ -1,9 +1,8 @@
 PImage[] creatures;
 PImage[] noCreatures;
 int creatureNumber;
-int creatureSize = 430;
+int creatureSize = 400;
 boolean shouldDance = false;
-boolean shouldList = false;
 boolean[] creaturesAlive = new boolean[8];
 
 float rot = 0.0;
@@ -20,7 +19,7 @@ void setCreature(int n){
 
 void drawCreature(int n){
   pushMatrix();
-  translate(width/2, height/2+150);
+  translate(width/2, height/2+230);
   if (shouldDance == true){
     rotate(rot);
     rot += 0.06;
@@ -34,14 +33,15 @@ void mouseWheel(MouseEvent event){
   int count = event.getCount();
   if (count>0){
     creatureSize -= 3;
-    creatureSize = constrain(creatureSize, 250, 450);
+    creatureSize = constrain(creatureSize, 250, 430);
   }
   else {
     creatureSize += 3;
-    creatureSize = constrain(creatureSize, 250, 450);
+    creatureSize = constrain(creatureSize, 250, 430);
   }
 }
 
+// when there is the button for playing, this code will be distroyed
 void mousePressed(){
   if(mouseButton == LEFT){
     if (shouldDance == false){
