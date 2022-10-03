@@ -1,9 +1,6 @@
 int[] potionCount = {10, 15, 5};
 
-void setup(){
-  size(540,960);
-  background(255);
-  
+void setEndingScreen(){
   creatures = new PImage[8];
   for(int i=0; i<creatures.length; i++){
     creatures[i] = loadImage("creature"+i+".png");
@@ -18,8 +15,7 @@ void setup(){
   creatureEnding();
 }
 
-void draw(){
-  background(255);
+void drawEndingScreen(){
   drawCreature(creatureNumber);
   
   if (shouldList == true){
