@@ -1,11 +1,12 @@
 Potion potion = new Potion();
-DayNight cdnButton = new DayNight();
 Credit creditBtn = new Credit();
-Boolean gameStart = false, showCredit = false, changeBG = false;
+BackgroundBtn backgroundBtn = new BackgroundBtn();
+Boolean gameStart = false, showCredit = false;
 
 void setup(){
   size(540, 960);
   creditBtn.makeButton();
+  backgroundBtn.checkTime();
 }
 
 void draw(){
@@ -28,12 +29,12 @@ void draw(){
     
   }else if(gameStart == true){
     
-    cdnButton.changeDayNight();
+    backgroundBtn.changeBackground();
     
     potion.time = millis() - potion.startTime;
   
     potion.randomPotion();
-    cdnButton.drawCdnBtn();
+    backgroundBtn.drawBtn();
   }
   
 }
@@ -43,6 +44,7 @@ void keyPressed(){
     potion.countPotion();
   }
   
+  //test
   if(key == 'q'){
     gameStart = true;
   }
@@ -52,6 +54,7 @@ void mouseClicked(){
   if(gameStart == false){
     creditBtn.checkBtnClicked();
   }else{
-    cdnButton.checkBtnClicked();
+    backgroundBtn.checkBtn1Clicked();
+    backgroundBtn.checkBtn2Clicked();
   }
 }
