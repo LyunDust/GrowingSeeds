@@ -43,7 +43,7 @@ void mousePressed(){
   }
 }
 
-void decideEnding(){
+void decideEnding(){ //Must be checked within draw()
   int passedTime=millis()-savedTime;
   
   if(passedTime<30000&&WaterNum>=20){
@@ -60,8 +60,4 @@ void decideEnding(){
 }
 
 void dieEnding(){
-}
-
-void creatureEnding(){
-  println("The seeds have grown well");
 }
