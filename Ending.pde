@@ -1,12 +1,13 @@
 //This is just for testing. 
 //Coordinate the details with the team member's code and match them.
 
-PImage Cloud;
+PImage Cloud, img;
 PImage[] creatures;
 PImage Creature;
 int DecideCreature;
 float x,y;
 float angle=0;
+
 
 void setBackground(){
   background(255);
@@ -23,10 +24,17 @@ void creatureEnding(){
   setBackground();
   loadCreature();
   imageMode(CENTER);
-  //jump();
-  move();
+  if(DecideCreature==1){
+    move(); 
+    angle+=5;
+  }else if(DecideCreature==0||DecideCreature==3){
+    jump();
+    angle+=5;
+  }else if(DecideCreature==2){
+    
+  }
   image(creatures[DecideCreature],x,y,400,400);
-  angle+=2;
+  
 }
 
 void loadCreature(){
@@ -36,4 +44,5 @@ void loadCreature(){
   creatures[2]=loadImage("jackOLantern.png");
   creatures[3]=loadImage("wingcat.png");
   DecideCreature=1;
+  img=creatures[DecideCreature];
 }

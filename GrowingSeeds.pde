@@ -3,9 +3,11 @@ int WaterNum=0;
 int savedTime;
 Rain RainWater[];
 boolean CloudClicked;
+boolean PlayMode, EndingMode;
 int totalDrops=0;
 
 void setup(){
+  PlayMode=true;
   size(540,960);
   background(255);
   cloud=loadImage("cloud.png");
@@ -16,24 +18,12 @@ void setup(){
 }
 
 void draw(){
-  int i=0;
-  background(255);
-  imageMode(CENTER);
-  image(cloud,width/2,200,400,400);
-  image(seed,width/2,height-100,200,200);
-  if(CloudClicked){  
-    println(WaterNum);
-    RainWater[totalDrops]=new Rain();
-    totalDrops++;
-    if(totalDrops>=RainWater.length){
-      totalDrops = 0;
-      CloudClicked=false;
-    }
-    for(i=0;i<totalDrops;i++){
-      RainWater[i].display();
-    }   
+  if(PlayMode){
+    drawInPlayMode();
+  } 
+  if(EndingMode){
+    creatureEnding();
   }
-  decideEnding();
 }
 
 void mousePressed(){
@@ -55,9 +45,30 @@ void decideEnding(){ //Must be checked within draw()
     dieEnding();
   }
   else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=20){
-    creatureEnding();
+    PlayMode=false;
+    EndingMode=true;   
   }
 }
 
 void dieEnding(){
+}
+
+void drawInPlayMode(){   
+  background(255);
+  imageMode(CENTER);
+  image(cloud,width/2,200,400,400);
+  image(seed,width/2,height-100,200,200);
+  if(CloudClicked){  
+    println(WaterNum);
+    RainWater[totalDrops]=new Rain();
+    totalDrops++;
+    if(totalDrops>=RainWater.length){
+      totalDrops = 0;
+      CloudClicked=false;
+    }
+    for(int i=0;i<totalDrops;i++){
+      RainWater[i].display();
+    }   
+  }
+  decideEnding();
 }
