@@ -27,9 +27,15 @@ void draw(){
 }
 
 void mousePressed(){
-  if(mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
+  if(PlayMode&&
+    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
     CloudClicked=true;   
     WaterNum++;
+  }
+  
+  if(EndingMode&&
+    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=height-400&&mouseY<=height){
+    moveCreature=true;
   }
 }
 
