@@ -31,3 +31,19 @@ void jump(){
   }
   //y-=(50*sin(radians(angle)));  
 }
+
+void imgScale(){
+  if(sin(radians(angle))==1){
+    //println(radians(angle));
+    replayNum++;
+    println(replayNum);
+  }
+  if(replayNum<=2){
+    imgSize*=sin(radians(angle));
+    imgSize=constrain(imgSize,300,400);
+  }else{
+    moveCreature=false;
+    replayNum=0;
+  }
+  //imgSize*=sin(radians(angle));
+}
