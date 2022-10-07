@@ -32,7 +32,8 @@ void creatureEnding(){
     jump();
     angle+=5;
   }else if(DecideCreature==2){
-    
+    move(); 
+    angle+=5;   
   }
   }
   image(creatures[DecideCreature],x,y,400,400);
@@ -45,7 +46,7 @@ void loadCreature(){
   creatures[1]=loadImage("hedgehog.png");
   creatures[2]=loadImage("jackOLantern.png");
   creatures[3]=loadImage("wingcat.png");
-  DecideCreature=2;
+  DecideCreature=1;
   img=creatures[DecideCreature];
-  println("w = " + img.width + " | h = " + img.height);
+  //println("w = " + img.width + " | h = " + img.height);
 }

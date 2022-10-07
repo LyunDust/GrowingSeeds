@@ -19,5 +19,15 @@ void move(){
 }
 
 void jump(){
-  y-=(50*sin(radians(angle)));  
+  if(sin(radians(angle))==-1){
+    //println(radians(angle));
+    replayNum++;
+  }
+  if(replayNum<=4){
+    y-=(50*sin(radians(angle))); 
+  }else{
+    moveCreature=false;
+    replayNum=0;
+  }
+  //y-=(50*sin(radians(angle)));  
 }
