@@ -1,6 +1,6 @@
 //Owner: LeeSoyoung
 class BackgroundBtn{
-  PImage changeDN, landscapeBtn;
+  PImage changeDN, landscapeBtn, BackgroundIMG;
   float x1, y1, x2, y2;
   Boolean changeBG, changeLS = false;
   
@@ -19,7 +19,7 @@ class BackgroundBtn{
   }
   
   void checkTime(){
-    if(hour() > 19){
+    if(hour() >= 19){
       changeBG = true; 
     }else{
       changeBG = false;
@@ -50,13 +50,16 @@ class BackgroundBtn{
   
   void changeBackground(){
     if(changeBG == true && changeLS == true){
-      background(4, 16, 93);
+      BackgroundIMG = loadImage("background3.png");
     }else if(changeBG == true && changeLS == false){
-      background(50, 131, 133);
+      BackgroundIMG = loadImage("background1.png");
     }else if(changeBG == false && changeLS == true){
-      background(50, 165, 255);
+      BackgroundIMG = loadImage("background2.png");
     }else if(changeBG == false && changeLS == false){
-      background(50, 227, 227);
+      BackgroundIMG = loadImage("background0.png");
     }
+    
+    imageMode(CENTER);
+    image(BackgroundIMG, width/2, height/2, 540, 960);
   }
 }

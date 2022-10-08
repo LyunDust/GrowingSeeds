@@ -4,7 +4,7 @@ class Potion{
   char randomKey;
   float x, y, appearProb, keyProb, theta = 0, potionSize = 150;
   PImage potionIMG;
-  int time, startTime;
+  int time = 0, startTime;
   Boolean potionShow = false;
   char[] pressKey = {'a', 's', 'd', 'w'};
   int[] potionCount = {0, 0, 0};
@@ -73,7 +73,7 @@ class Potion{
     drawText();
     drawPotionIMG();
     
-    theta += 0.07;
+    theta += 0.5;
   }
 }
 
@@ -129,6 +129,16 @@ class Potion{
     line(x-55/2+2.5, y-110+55/2-2.5, x+55/2-2.5, y-110-55/2+2.5);
     line(x+55/2-2.5, y-110+55/2-2.5, x-55/2+2.5, y-110-55/2+2.5);
     rect(x, y-110, 40, 40, 10);
+  }
+  
+  void clearPotion(){
+     potionShow = false;
+     theta = 0;
+     time = 0;
+     startTime = millis() - time;
+     potionCount[0] = 0;
+     potionCount[1] = 0;
+     potionCount[2] = 0;
   }
   
 }

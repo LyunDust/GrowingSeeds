@@ -14,23 +14,6 @@ class Credit{
     image(creditButton, x, y, 200, 200);
   }
   
-  //void btnEffect(){
-  //  if(mouseX > x - 85 && mouseX < x + 85 && 
-  //  mouseY > y - 40 && mouseY < y + 40){
-  //    pushMatrix();
-  //    translate(x, y);
-  //    scale(1.2);
-  //    drawButton();
-  //    popMatrix();
-  //  }else{
-  //    pushMatrix();
-  //    translate(x, y);
-  //    scale(1.0);
-  //    drawButton();
-  //    popMatrix();
-  //  }
-  //}
-  
   void checkBtnClicked(){
     
     if(mouseX > x - 85 && mouseX < x + 85 && 

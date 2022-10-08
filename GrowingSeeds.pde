@@ -1,33 +1,24 @@
 Potion potion = new Potion();
 Credit creditBtn = new Credit();
 BackgroundBtn backgroundBtn = new BackgroundBtn();
+homeBtn homeButton = new homeBtn();
 Boolean gameStart = false, showCredit = false;
 
 void setup(){
   size(540, 960);
   creditBtn.makeButton();
-  backgroundBtn.checkTime();
 }
 
 void draw(){
   background(255);
-  //println(potion.time);
   
   if(gameStart == false){//test code
     
-    background(100);
-    
-    creditBtn.drawButton();
-    //creditBtn.btnEffect();
-    
-    if(showCredit == true){
-      creditBtn.showCredit();
-    }
-    
-    potion.time = 0;
-    potion.startTime = millis();
+    SettingOff();
     
   }else if(gameStart == true){
+    
+    println(potion.time);
     
     backgroundBtn.changeBackground();
     
@@ -35,12 +26,13 @@ void draw(){
   
     potion.randomPotion();
     backgroundBtn.drawBtn();
+    homeButton.drawBtn();
   }
   
 }
 
 void keyPressed(){
-  if(potion.randomKey == key && potion.randomKey != 0){
+  if(gameStart == true && potion.randomKey == key && potion.randomKey != 0){
     potion.countPotion();
   }
   
@@ -56,5 +48,22 @@ void mouseClicked(){
   }else{
     backgroundBtn.checkBtn1Clicked();
     backgroundBtn.checkBtn2Clicked();
+    homeButton.checkBtnClicked();
   }
+}
+
+void SettingOff(){
+    background(100);
+    
+    creditBtn.drawButton();
+    
+    if(showCredit == true){
+      creditBtn.showCredit();
+    }
+    
+    backgroundBtn.checkTime();
+    backgroundBtn.changeLS = false;
+    
+    potion.clearPotion();
+    
 }
