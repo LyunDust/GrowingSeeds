@@ -5,6 +5,9 @@ class BackgroundBtn{
   Boolean changeBG, changeLS = false;
   
   void drawBtn(){
+    
+    changeBackground();
+    
     x1 = width-60;
     y1 = 60;
     changeDN = loadImage("daynight144dpi.png");
@@ -15,11 +18,12 @@ class BackgroundBtn{
     y2 = 150;
     landscapeBtn = loadImage("landscape.png");
     imageMode(CENTER);
-    image(landscapeBtn, x2, y2, 90, 90);
+    image(landscapeBtn, x2, y2, 90, 90);    
+    
   }
   
   void checkTime(){
-    if(hour() >= 19){
+    if(currentTime >= sunsetTime || currentTime < sunriseTime){
       changeBG = true; 
     }else{
       changeBG = false;

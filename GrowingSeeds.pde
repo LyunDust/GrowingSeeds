@@ -1,11 +1,15 @@
+import java.util.*;
 Potion potion = new Potion();
 Credit creditBtn = new Credit();
 BackgroundBtn backgroundBtn = new BackgroundBtn();
 homeBtn homeButton = new homeBtn();
-Boolean gameStart = false, showCredit = false;
+Boolean gameStart = false, showCredit = false, timeCheck = false;
 
 void setup(){
   size(540, 960);
+  
+  json = loadJSONObject(URL);
+  setTimeWithAPI();
   creditBtn.makeButton();
 }
 
@@ -18,14 +22,14 @@ void draw(){
     
   }else if(gameStart == true){
     
-    println(potion.time);
-    
-    backgroundBtn.changeBackground();
+    if(timeCheck == false){
+      checkStartTime();
+    }
     
     potion.time = millis() - potion.startTime;
   
-    potion.randomPotion();
     backgroundBtn.drawBtn();
+    potion.randomPotion();
     homeButton.drawBtn();
   }
   
@@ -35,7 +39,6 @@ void keyPressed(){
   if(gameStart == true && potion.randomKey == key && potion.randomKey != 0){
     potion.countPotion();
   }
-  
   //test
   if(key == 'q'){
     gameStart = true;
@@ -54,8 +57,8 @@ void mouseClicked(){
 
 void SettingOff(){
     background(100);
-    
-    creditBtn.drawButton();
+    creditBtn.drawButton();    
+    timeCheck = false;
     
     if(showCredit == true){
       creditBtn.showCredit();
@@ -63,7 +66,5 @@ void SettingOff(){
     
     backgroundBtn.checkTime();
     backgroundBtn.changeLS = false;
-    
     potion.clearPotion();
-    
 }
