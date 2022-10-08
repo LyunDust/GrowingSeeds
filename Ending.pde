@@ -1,5 +1,5 @@
 // for the test
-int[] potionCount = {10, 15, 5};
+int[] potionCount = {0, 0, 0};
 
 void setEndingScreen(){
   creatures = new PImage[8];

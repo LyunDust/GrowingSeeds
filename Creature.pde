@@ -5,6 +5,7 @@ int creatureSize = 400;
 boolean shouldDance = false;
 boolean[] creaturesAlive = new boolean[8];
 
+float creaturePosY = 0;
 float rot = 0.0;
 
 void setCreature(){
@@ -15,18 +16,18 @@ void setCreature(){
 
 void setCreature(int n){
   creaturesAlive[n] = true;
+  setForJump();
 }
 
 void drawCreature(int n){
   pushMatrix();
   translate(width/2, height/2+230);
-  if (shouldDance == true){
-    rotate(rot);
-    rot += 0.06;
-  }
+  
   imageMode(CENTER);
-  image(creatures[n], 0, 0, creatureSize, creatureSize);
+  image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
   popMatrix();
+  
+
 }
 
 void mouseWheel(MouseEvent event){
@@ -42,16 +43,7 @@ void mouseWheel(MouseEvent event){
 }
 
 // when there is the button for playing, this code will be distroyed
-void mousePressed(){
-  if(mouseButton == LEFT){
-    if (shouldDance == false){
-      shouldDance = true;
-    }
-    else {
-      shouldDance = false;
-    }
-  }
-  
+void mousePressed(){  
   if(mouseButton == RIGHT){
     if (shouldList == false){
       shouldList = true;

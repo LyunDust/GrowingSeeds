@@ -1,21 +1,34 @@
 boolean playing = false;
 
+PFont titleFont;
+
 void setup(){
   size(540,960);
-  background(255);
+  setStartScreen();
   setScreen();
 }
 
 void draw(){
   if (playing == true){
-    println("key pressed");
     drawScreen();
   }
-  else
-  println("no key");
+  else {
+    drawStartScreen();
+  }
 }
 
-// when there is the button for playing, this code will be distroyed
+void setStartScreen(){
+  titleFont = createFont("Cabin Sketch", 60);
+}
+
+void drawStartScreen(){
+  background(157, 207, 255);
+  textFont(titleFont, 60);
+  textAlign(CENTER, CENTER);
+  text("Growing Seeds", width/2, height/2-250);
+}
+
+// for the test
 void keyPressed(){
   if (key == ' '){
     playing = true;
