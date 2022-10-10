@@ -4,13 +4,18 @@ PImage[] creatures;
 PImage[] noCreatures;
 int creatureNumber;
 int creatureSize = 400;
-boolean[] creaturesAlive = new boolean[8];  // for every game data
-boolean[] currentCreaturesAlive = new boolean[8];  // for current game data
+boolean[] creaturesAlive = new boolean[8];  // for every game data - CreatureList
+boolean[] currentCreaturesAlive = new boolean[8];  // for current game data - CreatureList
 float creaturePosY = 0;
+
+void setCreatureFirst(){
+  for(int i=0; i<creatures.length; i++){
+    creaturesAlive[i] = false;
+  }
+}
 
 void setCreature(){
   for(int i=0; i<creatures.length; i++){
-    creaturesAlive[i] = false;
     currentCreaturesAlive[i] = false;
   }
 }
@@ -28,7 +33,6 @@ void drawCreature(int n){
   imageMode(CENTER);
   image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
   popMatrix();
-  println("creature"+n);
 }
 
 void mouseWheel(MouseEvent event){

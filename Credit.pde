@@ -30,7 +30,7 @@ class Credit{
   
   void showCredit(){
     stroke(0);
-    fill(255);
+    fill(255, 150);
     rectMode(CENTER);
     rect(width/2, 400, 400, 700, 30);
     

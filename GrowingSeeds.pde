@@ -11,9 +11,14 @@ Rain RainWater[];
 
 void setup(){
   size(540, 960);
+  backgroundBtn.BackgroundIMG0 = loadImage("background0.png");
+  backgroundBtn.BackgroundIMG1 = loadImage("background1.png");
+  backgroundBtn.BackgroundIMG2 = loadImage("background2.png");
+  backgroundBtn.BackgroundIMG3 = loadImage("background3.png");
   
   setStartScreen();
   setScreen();
+  setCreatureFirst();
   
   json = loadJSONObject(URL);
   setTimeWithAPI();
@@ -40,13 +45,15 @@ void draw(){
     potion.time = millis() - potion.startTime;
     potion.randomPotion();
     homeButton.drawBtn();
+    if (shouldList == true){
+      setList();
+    }
   }
   else if(playing == false && EndingMode == false){
     drawStartScreen();
     SettingOff();
   }
   else if(playing == false && EndingMode == true){
-    
     backgroundBtn.drawBtn();
     homeButton.drawBtn();
     drawScreen();
@@ -54,8 +61,10 @@ void draw(){
       checkStartTime();
     }
     drawForJump();
-  }
-  
+    if (shouldList == true){
+      setList();
+    }
+  }  
 }
 
 void keyPressed(){
@@ -140,7 +149,7 @@ void drawInPlayMode(){
   image(cloud,width/2,200,400,400);
   image(seed,width/2,height-100,200,200);
   if(CloudClicked){  
-//    println(WaterNum);
+    println(WaterNum);
     RainWater[totalDrops]=new Rain();
     totalDrops++;
     if(totalDrops>=RainWater.length){

@@ -17,13 +17,10 @@ void drawScreen(){
   if(playing == false && EndingMode == true){
     creatureEnding();
   }
-  if (shouldList == true){
-    setList();
-  }
 }
 
 void drawUI(){
-  WaterNum = constrain(WaterNum, 0, 10);
+  WaterNum = constrain(WaterNum, 0, 1000);
   stroke(255);
   strokeWeight(15);
   line(130, 30, width-130, 30);
