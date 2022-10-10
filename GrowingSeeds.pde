@@ -11,6 +11,10 @@ Rain RainWater[];
 
 void setup(){
   size(540, 960);
+  backgroundBtn.BackgroundIMG0 = loadImage("background0.png");
+  backgroundBtn.BackgroundIMG1 = loadImage("background1.png");
+  backgroundBtn.BackgroundIMG2 = loadImage("background2.png");
+  backgroundBtn.BackgroundIMG3 = loadImage("background3.png");
   
   setStartScreen();
   setScreen();

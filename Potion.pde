@@ -73,7 +73,7 @@ class Potion{
     drawText();
     drawPotionIMG();
     
-    theta += 0.5;
+    theta += 0.25;
   }
 }
 
