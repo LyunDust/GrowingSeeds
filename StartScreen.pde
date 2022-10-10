@@ -1,36 +1,19 @@
-boolean playing = false;
+//Owner: Kim Hyeri
 
 PFont titleFont;
-
-void setup(){
-  size(540,960);
-  setStartScreen();
-  setScreen();
-}
-
-void draw(){
-  if (playing == true){
-    drawScreen();
-  }
-  else {
-    drawStartScreen();
-  }
-}
+PFont potionFont;
 
 void setStartScreen(){
-  titleFont = createFont("Cabin Sketch", 60);
+  titleFont = loadFont("CabinSketch-Bold-100.vlw");
+  potionFont = loadFont("ArialMT-40.vlw");
 }
 
 void drawStartScreen(){
-  background(157, 207, 255);
-  textFont(titleFont, 60);
+  background(121, 171, 255);
+  fill(255);
+  textFont(titleFont);
   textAlign(CENTER, CENTER);
-  text("Growing Seeds", width/2, height/2-250);
-}
-
-// for the test
-void keyPressed(){
-  if (key == ' '){
-    playing = true;
-  }
+  text("Growing\nSeeds", width/2, height/2-230);
+  textSize(30);
+  text("for creatures..?", width/2, height/2);
 }

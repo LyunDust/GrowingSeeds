@@ -1,21 +1,23 @@
+//Owner: Kim Hyeri
+
 PImage[] creatures;
 PImage[] noCreatures;
 int creatureNumber;
 int creatureSize = 400;
-boolean shouldDance = false;
-boolean[] creaturesAlive = new boolean[8];
-
+boolean[] creaturesAlive = new boolean[8];  // for every game data
+boolean[] currentCreaturesAlive = new boolean[8];  // for current game data
 float creaturePosY = 0;
-float rot = 0.0;
 
 void setCreature(){
   for(int i=0; i<creatures.length; i++){
     creaturesAlive[i] = false;
+    currentCreaturesAlive[i] = false;
   }
 }
 
 void setCreature(int n){
   creaturesAlive[n] = true;
+  currentCreaturesAlive[n] = true;
   setForJump();
 }
 
@@ -26,8 +28,7 @@ void drawCreature(int n){
   imageMode(CENTER);
   image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
   popMatrix();
-  
-
+  println("creature"+n);
 }
 
 void mouseWheel(MouseEvent event){
@@ -39,17 +40,5 @@ void mouseWheel(MouseEvent event){
   else {
     creatureSize += 3;
     creatureSize = constrain(creatureSize, 250, 430);
-  }
-}
-
-// when there is the button for playing, this code will be distroyed
-void mousePressed(){  
-  if(mouseButton == RIGHT){
-    if (shouldList == false){
-      shouldList = true;
-    }
-    else {
-      shouldList = false;
-    }
   }
 }
