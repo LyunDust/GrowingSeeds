@@ -41,15 +41,3 @@ void mouseWheel(MouseEvent event){
     creatureSize = constrain(creatureSize, 250, 430);
   }
 }
-
-// when there is the button for playing, this code will be distroyed
-void mousePressed(){  
-  if(mouseButton == RIGHT){
-    if (shouldList == false){
-      shouldList = true;
-    }
-    else {
-      shouldList = false;
-    }
-  }
-}

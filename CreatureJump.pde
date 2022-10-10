@@ -14,7 +14,7 @@ void setForJump(){
 
 void drawForJump(){
   float micVolume = analyzer.analyze();
-  println(micVolume);
+  //println(micVolume);
   
   if (micVolume > quietLevel) {
     creaturePosY = micVolume*700;

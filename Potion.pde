@@ -123,6 +123,7 @@ class Potion{
   
   void drawKeyShape(){
     stroke(0);
+    strokeWeight(1);
     fill(255);
     rectMode(CENTER);
     rect(x, y-110, 55, 55, 10);

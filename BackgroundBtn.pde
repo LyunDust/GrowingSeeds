@@ -56,11 +56,11 @@ class BackgroundBtn{
     if(changeBG == true && changeLS == true){
       BackgroundIMG = loadImage("background3.png");
     }else if(changeBG == true && changeLS == false){
-      BackgroundIMG = loadImage("background1.PNG");
+      BackgroundIMG = loadImage("background1.png");
     }else if(changeBG == false && changeLS == true){
       BackgroundIMG = loadImage("background2.png");
     }else if(changeBG == false && changeLS == false){
-      BackgroundIMG = loadImage("background0.PNG");
+      BackgroundIMG = loadImage("background0.png");
     }
     
     imageMode(CENTER);
