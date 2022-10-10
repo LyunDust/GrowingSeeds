@@ -93,6 +93,7 @@ void SettingOff(){
     backgroundBtn.checkTime();
     backgroundBtn.changeLS = false;
     potion.clearPotion();
+}
     
 void mousePressed(){
   if(PlayMode&&
