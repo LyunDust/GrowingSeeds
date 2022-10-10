@@ -1,20 +1,21 @@
 //Owner: LeeSoyoung
 class homeBtn{
   PImage homeButton;
-  float x, y;
+  float bx, by;
   
   void drawBtn(){
-    x = 60;
-    y = 60;
+    bx = 60;
+    by = 60;
     homeButton = loadImage("homeBtn.png");
     imageMode(CENTER);
-    image(homeButton, x, y, 80, 80);
+    image(homeButton, bx, by, 80, 80);
   }
   
   void checkBtnClicked(){
-    if(mouseX > x - 45 && mouseX < x + 45 && 
-    mouseY > y - 40 && mouseY < y + 40){
-      gameStart = false;
+    if(mouseX > bx - 45 && mouseX < bx + 45 && 
+    mouseY > by - 40 && mouseY < by + 40){
+      playing = false;
+      EndingMode = false;
     }
   }
 }

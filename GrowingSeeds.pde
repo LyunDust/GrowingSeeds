@@ -3,28 +3,25 @@ Potion potion = new Potion();
 Credit creditBtn = new Credit();
 BackgroundBtn backgroundBtn = new BackgroundBtn();
 homeBtn homeButton = new homeBtn();
-Boolean gameStart = false, showCredit = false, timeCheck = false;
-
+Boolean showCredit = false, timeCheck = false, CloudClicked, playing = false, EndingMode = false;
+float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
-int WaterNum=0;
-int savedTime;
+int savedTime, totalDrops=0, WaterNum=0;
 Rain RainWater[];
-boolean CloudClicked;
-boolean PlayMode, EndingMode;
-int totalDrops=0;
 
 void setup(){
   size(540, 960);
+  
+  setStartScreen();
+  setScreen();
   
   json = loadJSONObject(URL);
   setTimeWithAPI();
   creditBtn.makeButton();
   
-  PlayMode=true;
+  //PlayMode=true;
 
-  Back=loadImage("background3.png");
   imageMode(CENTER);
-  image(Back,width/2,height/2,width,height);
   cloud=loadImage("cloud.png");
   seed=loadImage("seed.png");
   CloudClicked=false;
@@ -35,11 +32,10 @@ void setup(){
 void draw(){
   background(255);
   
-  if(gameStart == false){//test code
-    
-    SettingOff();
-    
-  }else if(gameStart == true){
+  if (playing == true && EndingMode == false){
+    backgroundBtn.drawBtn();
+    drawInPlayMode();
+    drawScreen();
     
     if(timeCheck == false){
       checkStartTime();
@@ -47,37 +43,59 @@ void draw(){
     
     potion.time = millis() - potion.startTime;
   
-    backgroundBtn.drawBtn();
+    
     potion.randomPotion();
     homeButton.drawBtn();
   }
-  
-    if(PlayMode){
-    drawInPlayMode();
-  } 
-  if(EndingMode){
-    creatureEnding();
+  else if(playing == false && EndingMode == false){
+    drawStartScreen();
+    SettingOff();
+  }else if(playing == false && EndingMode == true){
+    drawEndingScreen();
+    
   }
   
 }
 
 void keyPressed(){
-  if(gameStart == true && potion.randomKey == key && potion.randomKey != 0){
+  if(playing == true && EndingMode == false && potion.randomKey == key && potion.randomKey != 0){
     potion.countPotion();
   }
-  //test
-  if(key == 'q'){
-    gameStart = true;
+  
+  if (key == ' '){
+    playing = true;
   }
 }
 
 void mouseClicked(){
-  if(gameStart == false){
+  if(playing == false && EndingMode == false){
     creditBtn.checkBtnClicked();
-  }else{
+  }else if(playing == true && EndingMode == false){
     backgroundBtn.checkBtn1Clicked();
     backgroundBtn.checkBtn2Clicked();
     homeButton.checkBtnClicked();
+  }
+}
+    
+void mousePressed(){
+  if(playing == true && EndingMode == false &&
+    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
+    CloudClicked=true;   
+    //WaterNum++;
+  }
+  
+  if(EndingMode == true && playing == false && 
+    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=height-400&&mouseY<=height){
+    moveCreature=true;
+  }
+  
+  if(mouseButton == RIGHT){
+    if (shouldList == false){
+      shouldList = true;
+    }
+    else {
+      shouldList = false;
+    }
   }
 }
 
@@ -93,33 +111,21 @@ void SettingOff(){
     backgroundBtn.checkTime();
     backgroundBtn.changeLS = false;
     potion.clearPotion();
-    
-void mousePressed(){
-  if(PlayMode&&
-    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
-    CloudClicked=true;   
-    //WaterNum++;
-  }
-  
-  if(EndingMode&&
-    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=height-400&&mouseY<=height){
-    moveCreature=true;
-  }
 }
 
 void decideEnding(){ //Must be checked within draw()
   int passedTime=millis()-savedTime;
   
-  if(passedTime<30000&&WaterNum>=10){
-    println("Seed die because of too much water");
+  if(passedTime<30000&&WaterNum>=2){
+    //println("Seed die because of too much water");
     dieEnding();
   }
-  else if(passedTime>60000&&WaterNum<10){
-    println("Seed die because of too little water");
+  else if(passedTime>60000&&WaterNum<2){
+    //println("Seed die because of too little water");
     dieEnding();
   }
-  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=10){
-    PlayMode=false;
+  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=2){
+    playing=false;
     EndingMode=true;   
   }
 }
@@ -131,7 +137,6 @@ void drawInPlayMode(){
   //background(255);
   imageMode(CENTER);
   //draw rain->draw background every time!!
-  image(Back,width/2,height/2,width,height);
   image(cloud,width/2,200,400,400);
   image(seed,width/2,height-100,200,200);
   if(CloudClicked){  
