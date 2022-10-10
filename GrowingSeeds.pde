@@ -32,7 +32,7 @@ void mousePressed(){
   if(PlayMode&&
     mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
     CloudClicked=true;   
-    WaterNum++;
+    //WaterNum++;
   }
   
   if(EndingMode&&
@@ -75,6 +75,7 @@ void drawInPlayMode(){
     if(totalDrops>=RainWater.length){
       totalDrops = 0;
       CloudClicked=false;
+      WaterNum++;
     }
     for(int i=0;i<totalDrops;i++){
       RainWater[i].display();
