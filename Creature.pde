@@ -16,7 +16,7 @@ void setCreature(){
 
 void setCreature(int n){
   creaturesAlive[n] = true;
-  setForJump();
+  //setForJump();
 }
 
 void drawCreature(int n){

@@ -11,7 +11,7 @@ void setScreen(){
 void drawScreen(){
   drawUI();
   //drawEndingScreen();
-  drawForJump();
+  //drawForJump();
   if (shouldList == true){
     setList();
   }

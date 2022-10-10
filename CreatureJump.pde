@@ -1,4 +1,4 @@
-import processing.sound.*;
+/*import processing.sound.*;
 
 AudioIn micSound;
 Amplitude analyzer;
@@ -22,4 +22,4 @@ void drawForJump(){
   else if (micVolume < quietLevel) {
    creaturePosY = 0;
   }
-}
+}*/
