@@ -4,9 +4,8 @@ class homeBtn{
   float bx, by;
   
   void drawBtn(){
-    bx = 60;
-    by = 60;
-    homeButton = loadImage("homeBtn.png");
+    bx = 50;
+    by = 90;
     imageMode(CENTER);
     image(homeButton, bx, by, 80, 80);
   }

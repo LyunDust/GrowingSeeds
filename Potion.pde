@@ -2,8 +2,8 @@
 class Potion{
   String randomColor;
   char randomKey;
-  float x, y, appearProb, keyProb, theta = 0, potionSize = 150;
-  PImage potionIMG;
+  float x, y, appearProb, keyProb, theta = 0, potionSize = 140;
+  PImage potionIMG, potionIMG1, potionIMG2, potionIMG3;
   int time = 0, startTime;
   Boolean potionShow = false;
   char[] pressKey = {'a', 's', 'd', 'w'};
@@ -16,13 +16,13 @@ class Potion{
     keyProb = random(1);
     
     if(appearProb < 0.333){
-      potionIMG = loadImage("redPotion144dpi.png");
+      potionIMG = potionIMG1;
       randomColor = "RED";
     }else if(appearProb < 0.666){
-      potionIMG = loadImage("greenPotion144dpi.png");
+      potionIMG = potionIMG2;
       randomColor = "GREEN";
     }else{
-      potionIMG = loadImage("bluePotion144dpi.png");
+      potionIMG = potionIMG3;
       randomColor = "BLUE";
     }
     
@@ -68,7 +68,7 @@ class Potion{
   }
   
   if(potionShow == true){
-    potionSize = map(sin(theta), -1, 1, 150, 160);
+    potionSize = map(sin(theta), -1, 1, 140, 150);
     drawKeyShape();
     drawText();
     drawPotionIMG();

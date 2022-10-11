@@ -8,17 +8,17 @@ class BackgroundBtn{
     
     changeBackground();
     
-    x1 = width-60;
-    y1 = 60;
+    x1 = width-50;
+    y1 = 90;
     changeDN = loadImage("daynight144dpi.png");
     imageMode(CENTER);
-    image(changeDN, x1, y1, 100, 100);
+    image(changeDN, x1, y1, 90, 90);
     
-    x2 = width-60;
-    y2 = 150;
+    x2 = width-50;
+    y2 = 180;
     landscapeBtn = loadImage("landscape.png");
     imageMode(CENTER);
-    image(landscapeBtn, x2, y2, 90, 90);    
+    image(landscapeBtn, x2, y2, 80, 80);    
     
   }
   
@@ -31,8 +31,8 @@ class BackgroundBtn{
   }
   
   void checkBtn1Clicked(){
-    if(mouseX > x1 - 45 && mouseX < x1 + 45 && 
-    mouseY > y1 - 40 && mouseY < y1 + 40){
+    if(mouseX > x1 - 40 && mouseX < x1 + 40 && 
+    mouseY > y1 - 35 && mouseY < y1 + 35){
       if(changeBG == false){
         changeBG = true;
       }else{
@@ -42,8 +42,8 @@ class BackgroundBtn{
   }
   
   void checkBtn2Clicked(){
-    if(mouseX > x2 - 45 && mouseX < x2 + 45 && 
-    mouseY > y2 - 40 && mouseY < y2 + 40){
+    if(mouseX > x2 - 40 && mouseX < x2 + 40 && 
+    mouseY > y2 - 35 && mouseY < y2 + 35){
       if(changeLS == false){
         changeLS = true;
       }else{

@@ -11,17 +11,14 @@ Rain RainWater[];
 
 void setup(){
   size(540, 960);
-  backgroundBtn.BackgroundIMG0 = loadImage("background0.png");
-  backgroundBtn.BackgroundIMG1 = loadImage("background1.png");
-  backgroundBtn.BackgroundIMG2 = loadImage("background2.png");
-  backgroundBtn.BackgroundIMG3 = loadImage("background3.png");
+  
+  loadGameImage();
   
   setStartScreen();
   setScreen();
   
   json = loadJSONObject(URL);
   setTimeWithAPI();
-  creditBtn.makeButton();
   
   //PlayMode=true;
 
@@ -56,6 +53,7 @@ void draw(){
     SettingOff();
   }else if(playing == false && EndingMode == true){
     drawEndingScreen();
+    homeButton.drawBtn();
     
   }
   
@@ -64,10 +62,6 @@ void draw(){
 void keyPressed(){
   if(playing == true && EndingMode == false && potion.randomKey == key && potion.randomKey != 0){
     potion.countPotion();
-  }
-  
-  if (key == ' '){
-    playing = true;
   }
 }
 
@@ -78,12 +72,14 @@ void mouseClicked(){
     backgroundBtn.checkBtn1Clicked();
     backgroundBtn.checkBtn2Clicked();
     homeButton.checkBtnClicked();
+  }else if(playing == false && EndingMode == true){
+    homeButton.checkBtnClicked();
   }
 }
     
 void mousePressed(){
   if(playing == true && EndingMode == false &&
-    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
+    mouseX>=width/2-150&&mouseX<=width/2+150&&mouseY>=100&&mouseY<=300){
     CloudClicked=true;   
     //WaterNum++;
   }
@@ -107,6 +103,8 @@ void SettingOff(){
     background(100);
     creditBtn.drawButton();    
     timeCheck = false;
+    WaterNum = 0;
+    savedTime = millis();
     
     if(showCredit == true){
       creditBtn.showCredit();
@@ -120,15 +118,15 @@ void SettingOff(){
 void decideEnding(){ //Must be checked within draw()
   int passedTime=millis()-savedTime;
   
-  if(passedTime<30000&&WaterNum>=2){
+  if(passedTime<30000&&WaterNum>=1){
     //println("Seed die because of too much water");
     dieEnding();
   }
-  else if(passedTime>60000&&WaterNum<2){
+  else if(passedTime>60000&&WaterNum<1){
     //println("Seed die because of too little water");
     dieEnding();
   }
-  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=2){
+  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=1){
     playing=false;
     EndingMode=true;   
   }
@@ -141,8 +139,8 @@ void drawInPlayMode(){
   //background(255);
   imageMode(CENTER);
   //draw rain->draw background every time!!
-  image(cloud,width/2,200,400,400);
-  image(seed,width/2,height-100,200,200);
+  image(cloud,width/2,200,350,350);
+  image(seed,width/2,height-170,200,200);
   if(CloudClicked){  
     println(WaterNum);
     RainWater[totalDrops]=new Rain();
@@ -157,4 +155,17 @@ void drawInPlayMode(){
     }   
   }
   decideEnding();
+}
+
+
+void loadGameImage(){
+  backgroundBtn.BackgroundIMG0 = loadImage("background0.png");
+  backgroundBtn.BackgroundIMG1 = loadImage("background1.png");
+  backgroundBtn.BackgroundIMG2 = loadImage("background2.png");
+  backgroundBtn.BackgroundIMG3 = loadImage("background3.png");
+  homeButton.homeButton = loadImage("homeBtn.png");
+  potion.potionIMG1 = loadImage("redPotion144dpi.png");
+  potion.potionIMG2 = loadImage("greenPotion144dpi.png");
+  potion.potionIMG3 = loadImage("bluePotion144dpi.png");
+  creditBtn.makeButton();
 }
