@@ -10,7 +10,7 @@ void move(){
     replayNum++;
   }
   if(replayNum<=4){
-    x+=(20*cos(radians(angle)));
+    CreatureImgXpos+=(cos(radians(angle)));
   }else{
     moveCreature=false;
     replayNum=0;
@@ -24,7 +24,7 @@ void jump(){
     replayNum++;
   }
   if(replayNum<=4){
-    y-=(50*sin(radians(angle))); 
+    CreatureImgYpos-=(sin(radians(angle))); 
   }else{
     moveCreature=false;
     replayNum=0;
@@ -39,8 +39,8 @@ void imgScale(){
     println(replayNum);
   }
   if(replayNum<=2){
-    imgSize*=sin(radians(angle));
-    imgSize=constrain(imgSize,300,400);
+    creatureSize*=sin(radians(angle));
+    creatureSize=constrain(creatureSize,300,400);
   }else{
     moveCreature=false;
     replayNum=0;

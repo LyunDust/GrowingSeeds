@@ -3,7 +3,7 @@ class Rain{
   color c;
   
   Rain(){
-    x=random(width/2-200,width/2+200);
+    x=random(width/2-175,width/2+175);
     y=random(200,height-400);
     speed=random(5,10);
     c=color(#AFD8FF);

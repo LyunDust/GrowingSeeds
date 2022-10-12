@@ -1,12 +1,14 @@
 PImage[] creatures;
 PImage[] noCreatures;
 int creatureNumber;
-int creatureSize = 400;
+
 boolean shouldDance = false;
 boolean[] creaturesAlive = new boolean[8];
 
 float creaturePosY = 0;
 float rot = 0.0;
+
+
 
 void setCreature(){
   for(int i=0; i<creatures.length; i++){
@@ -19,14 +21,23 @@ void setCreature(int n){
   //setForJump();
 }
 
-void drawCreature(int n){
-  pushMatrix();
-  translate(width/2, height/2+230);
+void drawCreature(int n){//Coordinate code with KHR for interaction
+  
+  if(moveCreature){
+  if(n==0||n==1||n==5||n==7){
+    move(); 
+    angle+=2;
+  }else if(n==2||n==4||n==6){
+    jump();
+    angle+=2;
+  }else if(n==3){
+    imgScale();
+    angle+=2;   
+  }
+  }//added code-PSY
   
   imageMode(CENTER);
-  image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
-  popMatrix();
-  
+  image(creatures[n], CreatureImgXpos, CreatureImgYpos, creatureSize, creatureSize); 
 
 }
 
