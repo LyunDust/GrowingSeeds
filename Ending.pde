@@ -1,6 +1,9 @@
 //Owner: Kim Hyeri
 
 boolean moveCreature=false;
+float CreatureImgXpos;
+float CreatureImgYpos;
+int creatureSize;
 
 void setEndingScreen(){
   creatures = new PImage[8];
@@ -12,6 +15,10 @@ void setEndingScreen(){
   for(int i=0; i<noCreatures.length; i++){
     noCreatures[i] = loadImage("NoCreature"+i+".png");
   }
+  
+  CreatureImgXpos=width/2;
+  CreatureImgYpos=height-200;
+  creatureSize=400; //[PSY] changed code
   
   setCreature();
 }
@@ -37,7 +44,7 @@ void creatureEnding(){
   else if (potion.potionCount[2] >= potion.potionCount[0] && potion.potionCount[2] >= potion.potionCount[1]){
     creatureNumber = int(random(6, 8));
   }
-  
+
   // To prevent duplicates or changes to creatures
   int cNum = creatureNumber%2;
   if (cNum == 0){

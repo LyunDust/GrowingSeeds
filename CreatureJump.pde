@@ -16,11 +16,14 @@ void setForJump(){
 
 void drawForJump(){
   float micVolume = analyzer.analyze();
+  println(micVolume);
   
   if (micVolume > quietLevel) {
-    creaturePosY = micVolume*700;
+    //creaturePosY = micVolume*700;
+    CreatureImgYpos = height-200-(micVolume*1000);
   }
   else if (micVolume < quietLevel) {
-   creaturePosY = 0;
+   //creaturePosY = 0;
+   CreatureImgYpos=height-200;   //[PSY] changed code
   }
 }

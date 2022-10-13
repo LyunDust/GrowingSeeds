@@ -8,6 +8,7 @@ float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
 int savedTime, totalDrops=0, WaterNum=0;
 Rain RainWater[];
+SoundFile rainFile;
 
 void setup(){
   size(540, 960);
@@ -30,21 +31,30 @@ void setup(){
   cloud=loadImage("cloud.png");
   seed=loadImage("seed.png");
   CloudClicked=false;
-  savedTime=millis();
+  
   RainWater=new Rain[100];
+  rainFile=new SoundFile(this,"RainSound.mp3");
+  rainFile.amp(0.2);
 }
 
 void draw(){
+  background(255);
+  
   if (playing == true && EndingMode == false){
     backgroundBtn.drawBtn();
     drawInPlayMode();
     drawScreen();
+    
     if(timeCheck == false){
       checkStartTime();
     }
+    
     potion.time = millis() - potion.startTime;
+  
+    
     potion.randomPotion();
     homeButton.drawBtn();
+    
     if (shouldList == true){
       setList();
     }
@@ -52,8 +62,7 @@ void draw(){
   else if(playing == false && EndingMode == false){
     drawStartScreen();
     SettingOff();
-  }
-  else if(playing == false && EndingMode == true){
+  }else if(playing == false && EndingMode == true){
     backgroundBtn.drawBtn();
     homeButton.drawBtn();
     drawScreen();
@@ -64,7 +73,8 @@ void draw(){
     if (shouldList == true){
       setList();
     }
-  }  
+  }
+  
 }
 
 void keyPressed(){
@@ -72,8 +82,13 @@ void keyPressed(){
     potion.countPotion();
   }
   
-  if (key == ' '){
+  /*if (key == ' '){
     playing = true;
+    savedTime=millis();
+  }*/ //releasing after
+  if (key == 'q'){
+    playing = true;
+    savedTime=millis();
   }
 }
 
@@ -92,10 +107,13 @@ void mousePressed(){
     mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
     CloudClicked=true;   
     //WaterNum++;
+    if(!rainFile.isPlaying()){
+      rainFile.play();
+    }
   }
   
   if(EndingMode == true && playing == false && 
-    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=height-400&&mouseY<=height){
+    mouseX>=width/2-170&&mouseX<=width/2+170&&mouseY>=height-350&&mouseY<=height){
     moveCreature=true;
   }
   
@@ -133,7 +151,7 @@ void decideEnding(){ //Must be checked within draw()
     //println("Seed die because of too little water");
     dieEnding();
   }
-  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=2){
+  else if(passedTime>=30000&&passedTime<=60000&&WaterNum>=8){
     playing=false;
     EndingMode=true;   
   }
@@ -146,8 +164,8 @@ void drawInPlayMode(){
   //background(255);
   imageMode(CENTER);
   //draw rain->draw background every time!!
-  image(cloud,width/2,200,400,400);
-  image(seed,width/2,height-100,200,200);
+  image(cloud,width/2,200,340,340);
+  image(seed,width/2,height-200,200,200);
   if(CloudClicked){  
     println(WaterNum);
     RainWater[totalDrops]=new Rain();
@@ -155,6 +173,7 @@ void drawInPlayMode(){
     if(totalDrops>=RainWater.length){
       totalDrops = 0;
       CloudClicked=false;
+      rainFile.pause();   
       WaterNum++;
     }
     for(int i=0;i<totalDrops;i++){
