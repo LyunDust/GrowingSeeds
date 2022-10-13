@@ -6,7 +6,6 @@ int replayNum=0;
 
 void move(){
   if(cos(radians(angle))==1){
-    println(radians(angle));
     replayNum++;
   }
   if(replayNum<=4){

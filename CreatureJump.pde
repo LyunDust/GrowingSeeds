@@ -1,8 +1,7 @@
-/*import processing.sound.*;
+import processing.sound.*;
 
 AudioIn micSound;
 Amplitude analyzer;
-
 float quietLevel = 0.15;
 
 void setForJump(){
@@ -14,12 +13,22 @@ void setForJump(){
 
 void drawForJump(){
   float micVolume = analyzer.analyze();
-  //println(micVolume);
-  
+  if(playing==false&&EndingMode==true){
+    println(micVolume);
+  }
+   
   if (micVolume > quietLevel) {
-    creaturePosY = micVolume*700;
+    //creaturePosY = micVolume*700;
+    CreatureImgYpos = height-200-(micVolume*1000);
+    if(playing==false&&EndingMode==true){
+    println(CreatureImgYpos);
+    }
   }
   else if (micVolume < quietLevel) {
-   creaturePosY = 0;
+   //creaturePosY = 0;
+   CreatureImgYpos=height-200;
+       if(playing==false&&EndingMode==true){
+    println(CreatureImgYpos);
+    }
   }
-}*/
+}

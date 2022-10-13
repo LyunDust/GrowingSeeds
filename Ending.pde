@@ -23,6 +23,7 @@ void setEndingScreen(){
 }
 
 void drawEndingScreen(){
+  
   drawCreature(creatureNumber);
 }
 
@@ -44,23 +45,4 @@ void creatureEnding(){
     creatureNumber = int(random(6, 8));
   }
   setCreature(creatureNumber);
-}
-
-
-void CreatureEnding(){
-  
-  if(moveCreature){
-  if(creatureNumber==1){
-    move(); 
-    angle+=5;
-  }else if(creatureNumber==0||creatureNumber==3){
-    jump();
-    angle+=5;
-  }else if(creatureNumber==2){
-    imgScale();
-    angle+=5;   
-  }
-  }
-  image(creatures[creatureNumber],x,y,imgSize,imgSize);
-  
 }

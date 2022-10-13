@@ -18,13 +18,16 @@ void setCreature(){
 
 void setCreature(int n){
   creaturesAlive[n] = true;
-  //setForJump();
+  setForJump();
 }
 
 void drawCreature(int n){//Coordinate code with KHR for interaction
-  
-  if(moveCreature){
-  if(n==0||n==1||n==5||n==7){
+   if(!moveCreature){
+      drawForJump();
+    }
+      
+  else if(moveCreature){
+  /*if(n==0||n==1||n==5||n==7){
     move(); 
     angle+=2;
   }else if(n==2||n==4||n==6){
@@ -33,7 +36,9 @@ void drawCreature(int n){//Coordinate code with KHR for interaction
   }else if(n==3){
     imgScale();
     angle+=2;   
-  }
+  }*/
+  jump();
+  angle+=2;
   }//added code-PSY
   
   imageMode(CENTER);
