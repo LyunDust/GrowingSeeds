@@ -136,6 +136,8 @@ void decideEnding(){ //Must be checked within draw()
   else if(passedTime>=30000&&passedTime<=60000&&WaterNum>=8){
     playing=false;
     EndingMode=true;   
+    //test
+    creatureEnding();
   }
 }
 
@@ -148,7 +150,7 @@ void drawInPlayMode(){
   //draw rain->draw background every time!!
 
   image(cloud,width/2,200,340,340);
-  image(seed,width/2,height-200,200,200);
+  image(seed,width/2,height-180,200,200);
 
   if(CloudClicked){  
     println(WaterNum);

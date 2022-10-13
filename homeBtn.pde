@@ -15,6 +15,9 @@ class homeBtn{
     mouseY > by - 40 && mouseY < by + 40){
       playing = false;
       EndingMode = false;
+      if(rainFile.isPlaying()){
+        rainFile.pause();
+      }
     }
   }
 }

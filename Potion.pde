@@ -93,8 +93,6 @@ class Potion{
       }
     
       randomKey = 0;
-    
-      println(potionCount[0] + " / " + potionCount[1] + " / "+ potionCount[2]);
   }
   
   void drawPotionCountUI(){
