@@ -8,6 +8,7 @@ float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
 int savedTime, totalDrops=0, WaterNum=0;
 Rain RainWater[];
+SoundFile rainFile;
 
 void setup(){
   size(540, 960);
@@ -26,8 +27,10 @@ void setup(){
   cloud=loadImage("cloud.png");
   seed=loadImage("seed.png");
   CloudClicked=false;
-  savedTime=millis();
+  
   RainWater=new Rain[100];
+  rainFile=new SoundFile(this,"RainSound.mp3");
+  rainFile.amp(0.2);
 }
 
 void draw(){
@@ -81,11 +84,14 @@ void mousePressed(){
   if(playing == true && EndingMode == false &&
     mouseX>=width/2-150&&mouseX<=width/2+150&&mouseY>=100&&mouseY<=300){
     CloudClicked=true;   
+    if(!rainFile.isPlaying()){
+      rainFile.play();
+    }
     //WaterNum++;
   }
   
   if(EndingMode == true && playing == false && 
-    mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=height-400&&mouseY<=height){
+    mouseX>=width/2-170&&mouseX<=width/2+170&&mouseY>=height-350&&mouseY<=height){
     moveCreature=true;
   }
   
@@ -126,7 +132,8 @@ void decideEnding(){ //Must be checked within draw()
     //println("Seed die because of too little water");
     dieEnding();
   }
-  else if(passedTime>=3000&&passedTime<=60000&&WaterNum>=1){
+
+  else if(passedTime>=30000&&passedTime<=60000&&WaterNum>=8){
     playing=false;
     EndingMode=true;   
   }
@@ -139,8 +146,10 @@ void drawInPlayMode(){
   //background(255);
   imageMode(CENTER);
   //draw rain->draw background every time!!
-  image(cloud,width/2,200,350,350);
-  image(seed,width/2,height-170,200,200);
+
+  image(cloud,width/2,200,340,340);
+  image(seed,width/2,height-200,200,200);
+
   if(CloudClicked){  
     println(WaterNum);
     RainWater[totalDrops]=new Rain();
@@ -148,6 +157,7 @@ void drawInPlayMode(){
     if(totalDrops>=RainWater.length){
       totalDrops = 0;
       CloudClicked=false;
+      rainFile.pause();   
       WaterNum++;
     }
     for(int i=0;i<totalDrops;i++){
