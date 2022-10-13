@@ -18,6 +18,8 @@ class homeBtn{
       if(rainFile.isPlaying()){
         rainFile.pause();
       }
+      CloudClicked=false;
+      totalDrops=0;
     }
   }
 }
