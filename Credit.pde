@@ -36,6 +36,7 @@ class Credit{
     mouseY > y2 - 40 && mouseY < y2 + 40){
      playing = true;
      EndingMode = false;
+     savedTime=millis();
     }
   }
   
