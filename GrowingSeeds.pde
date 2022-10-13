@@ -93,10 +93,10 @@ void mousePressed(){
   if(playing == true && EndingMode == false &&
     mouseX>=width/2-200&&mouseX<=width/2+200&&mouseY>=0&&mouseY<=400){
     CloudClicked=true;   
+    //WaterNum++;
     if(!rainFile.isPlaying()){
       rainFile.play();
     }
-    //WaterNum++;
   }
   
   if(EndingMode == true && playing == false && 
