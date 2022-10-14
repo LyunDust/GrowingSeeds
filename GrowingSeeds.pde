@@ -136,8 +136,8 @@ void decideEnding(){ //Must be checked within draw()
   else if(passedTime>=30000&&passedTime<=60000&&WaterNum>=8){
     playing=false;
     EndingMode=true;   
-    //test
-    creatureEnding();
+    ////test
+    //creatureEnding();
   }
 }
 
