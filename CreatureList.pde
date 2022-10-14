@@ -1,3 +1,5 @@
+//Owner: Kim Hyeri
+
 PImage creatureList;
 boolean shouldList = false;
 

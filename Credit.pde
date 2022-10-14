@@ -48,6 +48,7 @@ class Credit{
     rect(width/2, 400, 400, 700, 30);
     
     fill(0);
+    textFont(potionFont);
     textAlign(CENTER);
     textSize(30);
     text("-Programming-\nKim Hyeri\nPark Sinyoung\nLee Soyoung\n\n-Art-\nKim Hyeri\nLee Soyoung\n\n-Sound-\nPark Sinyoung", 

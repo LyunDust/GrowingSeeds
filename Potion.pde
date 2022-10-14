@@ -34,7 +34,8 @@ class Potion{
   
   void drawText(){
     fill(0);
-    textSize(40);
+    //textSize(40);
+    textFont(potionFont);
     textAlign(CENTER);
     if(randomKey == 'd'){
       text(randomKey, x, y-97);
@@ -101,6 +102,7 @@ class Potion{
     fill(255, 200);
     rect(20, height-170, 95, 140, 20);
     
+    textFont(potionFont);
     textAlign(CENTER);
     textSize(20);
     fill(0);

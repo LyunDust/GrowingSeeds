@@ -1,3 +1,5 @@
+//Owner: Kim Hyeri
+
 import processing.sound.*;
 
 AudioIn micSound;
@@ -14,10 +16,11 @@ void setForJump(){
 
 void drawForJump(){
   float micVolume = analyzer.analyze();
-  //println(micVolume);
+  println(micVolume);
   
   if (micVolume > quietLevel) {
-    CreatureImgYpos=height-200-(micVolume*1000);
+    //creaturePosY = micVolume*700;
+    CreatureImgYpos = height-200-(micVolume*1000);
   }
   else if (micVolume < quietLevel) {
    //creaturePosY = 0;

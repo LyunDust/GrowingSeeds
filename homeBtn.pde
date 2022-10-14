@@ -6,6 +6,7 @@ class homeBtn{
   void drawBtn(){
     bx = 50;
     by = 90;
+
     imageMode(CENTER);
     image(homeButton, bx, by, 80, 80);
   }

@@ -1,11 +1,19 @@
+//Owner: Kim Hyeri
+
 PImage[] creatures;
 PImage[] noCreatures;
 int creatureNumber;
-boolean shouldDance = false;
-boolean[] creaturesAlive = new boolean[8];
+boolean[] creaturesAlive = new boolean[8];  // for every game data - CreatureList
+boolean[] currentCreaturesAlive = new boolean[8];  // for current game data - CreatureList
 
 float creaturePosY = 0;
 float rot = 0.0;
+
+void setCreatureFirst(){
+  for(int i=0; i<creatures.length; i++){
+    creaturesAlive[i] = false;
+  }
+}
 
 void setCreature(){
   for(int i=0; i<creatures.length; i++){
@@ -15,6 +23,7 @@ void setCreature(){
 
 void setCreature(int n){
   creaturesAlive[n] = true;
+  currentCreaturesAlive[n] = true;
   setForJump();
 }
 
@@ -25,11 +34,10 @@ void drawCreature(int n){
   imageMode(CENTER);
   image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
   popMatrix();*/
+  
   if(!moveCreature){
     drawForJump();
-  }
-  
-  if(moveCreature){
+  }else if(moveCreature){
   if(n==0||n==1||n==5||n==7){
     move(); 
     angle+=2;

@@ -17,6 +17,7 @@ void setup(){
   
   setStartScreen();
   setScreen();
+  setCreatureFirst();
   
   json = loadJSONObject(URL);
   setTimeWithAPI();
@@ -50,14 +51,25 @@ void draw(){
     
     potion.randomPotion();
     homeButton.drawBtn();
+    
+    if (shouldList == true){
+      setList();
+    }
   }
   else if(playing == false && EndingMode == false){
     drawStartScreen();
     SettingOff();
   }else if(playing == false && EndingMode == true){
-    drawEndingScreen();
-    homeButton.drawBtn();
     
+    backgroundBtn.drawBtn();
+    homeButton.drawBtn();
+    drawScreen();
+    if(timeCheck == false){
+      checkStartTime();
+    }
+    if (shouldList == true){
+      setList();
+    }
   }
   
 }
@@ -71,11 +83,9 @@ void keyPressed(){
 void mouseClicked(){
   if(playing == false && EndingMode == false){
     creditBtn.checkBtnClicked();
-  }else if(playing == true && EndingMode == false){
+  }else {
     backgroundBtn.checkBtn1Clicked();
     backgroundBtn.checkBtn2Clicked();
-    homeButton.checkBtnClicked();
-  }else if(playing == false && EndingMode == true){
     homeButton.checkBtnClicked();
   }
 }
@@ -106,7 +116,6 @@ void mousePressed(){
 }
 
 void SettingOff(){
-    background(100);
     creditBtn.drawButton();    
     timeCheck = false;
     WaterNum = 0;
@@ -151,7 +160,7 @@ void drawInPlayMode(){
 
   image(cloud,width/2,200,340,340);
   image(seed,width/2,height-180,200,200);
-
+  
   if(CloudClicked){  
     println(WaterNum);
     RainWater[totalDrops]=new Rain();
