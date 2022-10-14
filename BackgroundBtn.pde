@@ -9,13 +9,13 @@ class BackgroundBtn{
     changeBackground();
     
     x1 = width-50;
-    y1 = 90;
+    y1 = 50;
     changeDN = loadImage("daynight144dpi.png");
     imageMode(CENTER);
     image(changeDN, x1, y1, 90, 90);
     
     x2 = width-50;
-    y2 = 180;
+    y2 = 140;
     landscapeBtn = loadImage("landscape.png");
     imageMode(CENTER);
     image(landscapeBtn, x2, y2, 80, 80);    

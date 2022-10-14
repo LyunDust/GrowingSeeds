@@ -5,7 +5,7 @@ PFont potionFont;
 
 void setStartScreen(){
   titleFont = loadFont("CabinSketch-Bold-100.vlw");
-  potionFont = loadFont("ArialMT-40.vlw");
+  potionFont = loadFont("LucidaSans-40.vlw");
 }
 
 void drawStartScreen(){

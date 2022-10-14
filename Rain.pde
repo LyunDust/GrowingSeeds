@@ -4,7 +4,7 @@ class Rain{
   
   Rain(){
     x=random(width/2-165,width/2+165);
-    y=random(200,height-350);
+    y=random(180,height-350);
     speed=random(5,10);
     c=color(#AFD8FF);
   }

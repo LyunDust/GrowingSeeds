@@ -20,12 +20,12 @@ void drawScreen(){
 }
 
 void drawUI(){
-  WaterNum = constrain(WaterNum, 0, 1000);
+  waterGage = constrain(waterGage, 0, 15);
   stroke(255);
   strokeWeight(15);
   line(130, 30, width-130, 30);
   stroke(157, 207, 255);
   strokeWeight(10);
-  float lineWidth = map(WaterNum, 0, 10, 130, width-130);
+  float lineWidth = map(waterGage, 0, 15, 130, width-130);
   line(130, 30, lineWidth, 30);
 }

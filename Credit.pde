@@ -43,15 +43,15 @@ class Credit{
   void showCredit(){
     stroke(0);
     strokeWeight(1);
-    fill(255, 150);
+    fill(255, 255);
     rectMode(CENTER);
     rect(width/2, 400, 400, 700, 30);
     
     fill(0);
     textFont(potionFont);
     textAlign(CENTER);
-    textSize(30);
+    textSize(35);
     text("-Programming-\nKim Hyeri\nPark Sinyoung\nLee Soyoung\n\n-Art-\nKim Hyeri\nLee Soyoung\n\n-Sound-\nPark Sinyoung", 
-    width/2, 150);
+    width/2, 160);
   }
 }

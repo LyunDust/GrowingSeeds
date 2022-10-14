@@ -3,10 +3,10 @@ Potion potion = new Potion();
 Credit creditBtn = new Credit();
 BackgroundBtn backgroundBtn = new BackgroundBtn();
 homeBtn homeButton = new homeBtn();
-Boolean showCredit = false, timeCheck = false, CloudClicked, playing = false, EndingMode = false;
+Boolean showCredit = false, timeCheck = false, CloudClicked, playing = false, EndingMode = false, gage = false;
 float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
-int savedTime, totalDrops=0, WaterNum=0;
+int savedTime, totalDrops=0, WaterNum=0, waterGage = 0;
 Rain RainWater[];
 SoundFile rainFile;
 
@@ -45,11 +45,14 @@ void draw(){
     if(timeCheck == false){
       checkStartTime();
     }
-    
-    potion.time = millis() - potion.startTime;
   
-    
-    potion.randomPotion();
+    if(shouldList == false){
+      potion.tempTime = millis();
+      potion.time = millis() - potion.startTime;
+      potion.randomPotion();
+    }else{
+      potion.pauseTime = millis()-potion.tempTime;
+    }
     homeButton.drawBtn();
     
     if (shouldList == true){
@@ -81,6 +84,7 @@ void keyPressed(){
 }
 
 void mouseClicked(){
+  if(mouseButton == LEFT && shouldList == false){
   if(playing == false && EndingMode == false){
     creditBtn.checkBtnClicked();
   }else {
@@ -88,13 +92,20 @@ void mouseClicked(){
     backgroundBtn.checkBtn2Clicked();
     homeButton.checkBtnClicked();
   }
+  }
 }
     
 void mousePressed(){
-  if(playing == true && EndingMode == false &&
+  
+  if(mouseButton == LEFT && shouldList == false){
+    if(playing == true && EndingMode == false &&
     mouseX>=width/2-150&&mouseX<=width/2+150&&mouseY>=100&&mouseY<=300){
-    CloudClicked=true;   
-    //WaterNum++;
+    if(CloudClicked == false){
+      gage = true;
+    }
+    CloudClicked=true;
+    
+    
     if(!rainFile.isPlaying()){
       rainFile.play();
     }
@@ -103,6 +114,7 @@ void mousePressed(){
   if(EndingMode == true && playing == false && 
     mouseX>=width/2-170&&mouseX<=width/2+170&&mouseY>=height-350&&mouseY<=height){
     moveCreature=true;
+  } 
   }
   
   if(mouseButton == RIGHT){
@@ -111,6 +123,7 @@ void mousePressed(){
     }
     else {
       shouldList = false;
+      potion.startTime += potion.pauseTime;
     }
   }
 }
@@ -119,6 +132,7 @@ void SettingOff(){
     creditBtn.drawButton();    
     timeCheck = false;
     WaterNum = 0;
+    waterGage = 0;
     savedTime = millis();
     
     if(showCredit == true){
@@ -131,22 +145,10 @@ void SettingOff(){
 }
 
 void decideEnding(){ //Must be checked within draw()
-  int passedTime=millis()-savedTime;
-  
-  if(passedTime<30000&&WaterNum>=1){
-    //println("Seed die because of too much water");
-    dieEnding();
-  }
-  else if(passedTime>60000&&WaterNum<1){
-    //println("Seed die because of too little water");
-    dieEnding();
-  }
 
-  else if(passedTime>=30000&&passedTime<=60000&&WaterNum>=8){
+  if(WaterNum>=15){
     playing=false;
     EndingMode=true;   
-    ////test
-    //creatureEnding();
   }
 }
 
@@ -158,11 +160,17 @@ void drawInPlayMode(){
   imageMode(CENTER);
   //draw rain->draw background every time!!
 
-  image(cloud,width/2,200,340,340);
+  image(cloud,width/2,180,340,340);
   image(seed,width/2,height-180,200,200);
   
   if(CloudClicked){  
     println(WaterNum);
+    
+    if(gage == true){
+      waterGage += 1;
+      gage = false;
+    }
+    
     RainWater[totalDrops]=new Rain();
     totalDrops++;
     if(totalDrops>=RainWater.length){

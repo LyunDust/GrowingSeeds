@@ -4,7 +4,7 @@ class Potion{
   char randomKey;
   float x, y, appearProb, keyProb, theta = 0, potionSize = 140;
   PImage potionIMG, potionIMG1, potionIMG2, potionIMG3;
-  int time = 0, startTime;
+  int time = 0, startTime, tempTime = 0, pauseTime = 0;
   Boolean potionShow = false;
   char[] pressKey = {'a', 's', 'd', 'w'};
   int[] potionCount = {0, 0, 0};
