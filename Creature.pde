@@ -25,6 +25,9 @@ void drawCreature(int n){
   imageMode(CENTER);
   image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
   popMatrix();*/
+  if(!moveCreature){
+    drawForJump();
+  }
   
   if(moveCreature){
   if(n==0||n==1||n==5||n==7){

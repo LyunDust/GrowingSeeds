@@ -17,7 +17,7 @@ void drawForJump(){
   //println(micVolume);
   
   if (micVolume > quietLevel) {
-    //creaturePosY = micVolume*700;
+    CreatureImgYpos=height-200-(micVolume*1000);
   }
   else if (micVolume < quietLevel) {
    //creaturePosY = 0;
