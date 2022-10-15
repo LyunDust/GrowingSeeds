@@ -15,10 +15,19 @@ class homeBtn{
     if(mouseX > bx - 45 && mouseX < bx + 45 && 
     mouseY > by - 40 && mouseY < by + 40){
       //sound play
+      if(!btnSound.isPlaying()){
+        btnSound.play();
+      }
+      if(PlayScreenBgm.isPlaying()){
+        PlayScreenBgm.pause();
+      }
+      if(!StartScreenBgm.isPlaying()){
+        StartScreenBgm.play();
+      }
       playing = false;
       EndingMode = false;
-      if(rainFile.isPlaying()){
-        rainFile.pause();
+      if(rainSound.isPlaying()){
+        rainSound.pause();
       }
       CloudClicked=false;
       totalDrops=0;

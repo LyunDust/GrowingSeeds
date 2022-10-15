@@ -28,12 +28,6 @@ void setCreature(int n){
 }
 
 void drawCreature(int n){
-  /*pushMatrix();
-  translate(width/2, height/2+230);
-  
-  imageMode(CENTER);
-  image(creatures[n], 0, -creaturePosY, creatureSize, creatureSize);
-  popMatrix();*/
   
   if(!moveCreature){
     drawForJump();

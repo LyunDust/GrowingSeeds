@@ -18,9 +18,13 @@ void setEndingScreen(){
   
   CreatureImgXpos=width/2;
   CreatureImgYpos=height-200;
-  creatureSize=400; //[PSY] changed code
-  
+  creatureSize=400; 
   setCreature();
+  
+  creatureSound=new SoundFile[8];
+  for(int i=0;i<8;i++){
+    creatureSound[i]=new SoundFile(this,"creatureSound"+i+".mp3");
+  } //load Creature Sound
 }
 
 void drawEndingScreen(){
@@ -68,25 +72,4 @@ void creatureEnding(){
     }
   }
   drawEndingScreen();
-}
-
-//This is just for testing. 
-//Coordinate the details with the team member's code and match them.
-
-void CreatureEnding(){
-  
-  if(moveCreature){
-  if(creatureNumber==1){
-    move(); 
-    angle+=5;
-  }else if(creatureNumber==0||creatureNumber==3){
-    jump();
-    angle+=5;
-  }else if(creatureNumber==2){
-    imgScale();
-    angle+=5;   
-  }
-  }
-  image(creatures[creatureNumber],x,y,imgSize,imgSize);
-  
 }

@@ -23,6 +23,9 @@ class Credit{
     
     if(mouseX > x1 - 85 && mouseX < x1 + 85 && 
     mouseY > y1 - 40 && mouseY < y1 + 40){
+      if(!btnSound.isPlaying()){
+        btnSound.play();
+      }
       if(showCredit == false){
         showCredit = true;
         tint(150);
@@ -34,6 +37,9 @@ class Credit{
     
     if(mouseX > x2 - 85 && mouseX < x2 + 85 && 
     mouseY > y2 - 40 && mouseY < y2 + 40){
+      if(!btnSound.isPlaying()){
+        btnSound.play();
+      }
      playing = true;
      EndingMode = false;
      savedTime=millis();

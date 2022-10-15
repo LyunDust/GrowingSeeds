@@ -16,4 +16,7 @@ void drawStartScreen(){
   text("Growing\nSeeds", width/2, height/2-230);
   textSize(30);
   text("for creatures..?", width/2, height/2);
+  if(!StartScreenBgm.isPlaying()){
+    StartScreenBgm.play();
+  }
 }

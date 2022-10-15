@@ -6,12 +6,6 @@ boolean shouldList = false;
 void setList(){
   background(255);
   drawList();
-  /*pushMatrix();
-  translate(width/2, height/2);
-  creatureList = loadImage("List.png");
-  imageMode(CENTER);
-  image(creatureList, 0, 0, width, height);
-  popMatrix();*/
   
   creatureList = loadImage("List.png");
   imageMode(CENTER);

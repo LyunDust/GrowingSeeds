@@ -13,12 +13,14 @@ float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
 int savedTime, totalDrops=0, WaterNum=0, waterGage = 0;
 Rain RainWater[];
-SoundFile rainFile;
+SoundFile rainSound, StartScreenBgm, PlayScreenBgm, btnSound, potionSound;
+SoundFile creatureSound[];
 
 void setup(){
   size(540, 960);
   
   loadGameImage();
+  loadGameSound(); //PSY
   
   setStartScreen();
   setScreen();
@@ -35,8 +37,7 @@ void setup(){
   CloudClicked=false;
   
   RainWater=new Rain[100];
-  rainFile=new SoundFile(this,"RainSound.mp3");
-  rainFile.amp(0.2);
+  
 }
 
 void draw(){
@@ -46,6 +47,13 @@ void draw(){
     backgroundBtn.drawBtn();
     drawInPlayMode();
     drawScreen();
+    
+    if(StartScreenBgm.isPlaying()){
+      StartScreenBgm.pause();
+    }
+    if(!PlayScreenBgm.isPlaying()){
+      PlayScreenBgm.play();
+    }
     
     if(timeCheck == false){
       checkStartTime();
@@ -100,6 +108,12 @@ void mouseClicked(){
   }
   }
 }
+
+void mouseReleased(){
+  if(btnSound.isPlaying()){
+    btnSound.pause();
+  }
+}
     
 void mousePressed(){
   
@@ -110,10 +124,9 @@ void mousePressed(){
       gage = true;
     }
     CloudClicked=true;
-    
-    
-    if(!rainFile.isPlaying()){
-      rainFile.play();
+       
+    if(!rainSound.isPlaying()){
+      rainSound.play();
     }
   }
   
@@ -179,7 +192,7 @@ void drawInPlayMode(){
     if(totalDrops>=RainWater.length){
       totalDrops = 0;
       CloudClicked=false;
-      rainFile.pause();   
+      rainSound.pause();   
       WaterNum++;
     }
     for(int i=0;i<totalDrops;i++){
@@ -200,4 +213,14 @@ void loadGameImage(){
   potion.potionIMG2 = loadImage("greenPotion144dpi.png");
   potion.potionIMG3 = loadImage("bluePotion144dpi.png");
   creditBtn.makeButton();
+}
+
+void loadGameSound(){  //Loading required sound during gameplay
+  rainSound=new SoundFile(this,"RainSound.mp3");
+  rainSound.amp(0.2);
+  StartScreenBgm=new SoundFile(this,"main.mp3");
+  PlayScreenBgm=new SoundFile(this,"play.mp3");
+  btnSound=new SoundFile(this,"button1.mp3");
+  potionSound=new SoundFile(this,"potion.wav");
+  //StartScreenBgm, PlayScreenBgm, btnSound, potionSound
 }
