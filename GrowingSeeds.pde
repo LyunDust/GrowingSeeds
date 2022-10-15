@@ -1,3 +1,8 @@
+// Owner: Lee Soyoung: merge & management
+// Kim Hyeri: creature system, mic interaction, setting screen
+// Lee Soyoung: potion system, weather API, button, SettingOff(), loadGameImage()
+// Park Sinyoung: cloud system, interaction, sound, drawInPlayMode(), decideEnding()
+
 import java.util.*;
 Potion potion = new Potion();
 Credit creditBtn = new Credit();
@@ -150,9 +155,6 @@ void decideEnding(){ //Must be checked within draw()
     playing=false;
     EndingMode=true;   
   }
-}
-
-void dieEnding(){
 }
 
 void drawInPlayMode(){   

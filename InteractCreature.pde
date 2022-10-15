@@ -1,3 +1,4 @@
+//Owner: Park Sinyoung
 //Creature type-> different interactions
 
 //2,4,6 ->flying

@@ -1,3 +1,4 @@
+//Owner: Park Sinyoung
 class Rain{
   float x,y,speed;
   color c;
