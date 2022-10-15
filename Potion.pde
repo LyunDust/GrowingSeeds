@@ -51,13 +51,13 @@ class Potion{
   
   
   void randomPotion(){
-  /*Every 3 seconds, 'potion' is displayed on the screen with a probability 
-  of 0.5. The probability of 'potion' by color is 0.333.*/
+  /*Every 2 seconds, 'potion' is displayed on the screen with a probability 
+  of 0.3 The probability of 'potion' by color is 0.333.*/
   
   drawPotionCountUI();
   
-  if(time > 3000){
-    if(random(1) > 0.1){
+  if(time > 2000){
+    if(random(1) > 0.3){
       setRandom(); //Randomly determine the color and position of the potion
       potionShow = true;
     }else{
