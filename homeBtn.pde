@@ -14,6 +14,7 @@ class homeBtn{
   void checkBtnClicked(){
     if(mouseX > bx - 45 && mouseX < bx + 45 && 
     mouseY > by - 40 && mouseY < by + 40){
+      //sound play
       playing = false;
       EndingMode = false;
       if(rainFile.isPlaying()){

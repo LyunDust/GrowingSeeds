@@ -84,6 +84,7 @@ void draw(){
 
 void keyPressed(){
   if(playing == true && EndingMode == false && potion.randomKey == key && potion.randomKey != 0){
+    //sound play
     potion.countPotion();
   }
 }
