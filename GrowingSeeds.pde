@@ -26,6 +26,9 @@ void setup(){
   setScreen();
   setCreatureFirst();
   
+  API_KEY = loadStrings("weatherKey.txt");
+  loadFileString();
+  
   json = loadJSONObject(URL);
   setTimeWithAPI();
   

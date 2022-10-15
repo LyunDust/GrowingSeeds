@@ -1,6 +1,6 @@
 //Owner: Lee Soyoung
-String API_KEY = "403777ce71df2ce96544c5f1ee993f6d",
-URL = "https://api.openweathermap.org/data/2.5/weather?q=Suwon&units=metric&appid="+API_KEY;
+String[] API_KEY;
+String URL = "https://api.openweathermap.org/data/2.5/weather?q=Suwon&units=metric&appid=";
 JSONObject json;
 long sunriseTime, sunsetTime, currentTime;
 Date date = new Date();
@@ -16,4 +16,11 @@ void checkStartTime(){
   date = new Date();
   currentTime = date.getTime()/1000;     
   timeCheck = true;
+}
+
+//get string from file
+void loadFileString(){
+  for(int i = 0; i < API_KEY.length; i++){
+    URL += API_KEY[i];
+  }
 }
