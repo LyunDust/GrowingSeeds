@@ -45,7 +45,8 @@ void drawCreature(int n){
   }//added code-PSY
 
   imageMode(CENTER);
-  image(creatures[n], CreatureImgXpos, CreatureImgYpos, creatureSize, creatureSize); //[PSY] changed code  
+  image(creatures[n], CreatureImgXpos, CreatureImgYpos, creatureSize, creatureSize); //[PSY] changed code 
+      
 }
 
 void mouseWheel(MouseEvent event){

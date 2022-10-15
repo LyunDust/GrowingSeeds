@@ -11,7 +11,7 @@ homeBtn homeButton = new homeBtn();
 Boolean showCredit = false, timeCheck = false, CloudClicked, playing = false, EndingMode = false, gage = false;
 float angle, imgsize, x, y, imgSize;
 PImage cloud,seed, Back;
-int savedTime, totalDrops=0, WaterNum=0, waterGage = 0;
+int savedTime, passedTime, totalDrops=0, WaterNum=0, waterGage = 0;
 Rain RainWater[];
 SoundFile rainSound, StartScreenBgm, PlayScreenBgm, btnSound, potionSound;
 SoundFile creatureSound[];
@@ -30,9 +30,7 @@ void setup(){
   loadFileString();
   
   json = loadJSONObject(URL);
-  setTimeWithAPI();
-  
-  //PlayMode=true;
+  setTimeWithAPI(); 
 
   imageMode(CENTER);
   cloud=loadImage("cloud.png");
@@ -55,6 +53,7 @@ void draw(){
       StartScreenBgm.pause();
     }
     if(!PlayScreenBgm.isPlaying()){
+      PlayScreenBgm.cueFrame(0);
       PlayScreenBgm.play();
     }
     
@@ -78,11 +77,11 @@ void draw(){
   else if(playing == false && EndingMode == false){
     drawStartScreen();
     SettingOff();
-  }else if(playing == false && EndingMode == true){
-    
+  }else if(playing == false && EndingMode == true){  
     backgroundBtn.drawBtn();
     homeButton.drawBtn();
     drawScreen();
+    SoundInEnding(getCreatureNumber());
     if(timeCheck == false){
       checkStartTime();
     }
@@ -96,6 +95,7 @@ void draw(){
 void keyPressed(){
   if(playing == true && EndingMode == false && potion.randomKey == key && potion.randomKey != 0){
     //sound play
+    potionSound.playFor(1000);
     potion.countPotion();
   }
 }
@@ -155,7 +155,7 @@ void SettingOff(){
     timeCheck = false;
     WaterNum = 0;
     waterGage = 0;
-    savedTime = millis();
+    //savedTime = millis();
     
     if(showCredit == true){
       creditBtn.showCredit();
@@ -168,9 +168,10 @@ void SettingOff(){
 
 void decideEnding(){ //Must be checked within draw()
 
-  if(WaterNum>=15){
+  if(WaterNum>=5){
     playing=false;
     EndingMode=true;   
+    savedTime=millis();
   }
 }
 
@@ -205,6 +206,19 @@ void drawInPlayMode(){
   decideEnding();
 }
 
+void SoundInEnding(int n){
+  passedTime=millis()-savedTime;
+  
+  if(passedTime<=1000){
+    if(!creatureSound[n].isPlaying()){
+      creatureSound[n].playFor(1000);
+    }     
+  }else{
+    if(creatureSound[n].isPlaying()){
+    creatureSound[n].pause();
+    }
+  }
+}
 
 void loadGameImage(){
   backgroundBtn.BackgroundIMG0 = loadImage("background0.png");

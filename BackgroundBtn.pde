@@ -33,6 +33,10 @@ class BackgroundBtn{
   void checkBtn1Clicked(){
     if(mouseX > x1 - 40 && mouseX < x1 + 40 && 
     mouseY > y1 - 35 && mouseY < y1 + 35){
+      if(!btnSound.isPlaying()){
+        btnSound.cueFrame(0);
+        btnSound.play();
+      }
       if(changeBG == false){
         changeBG = true;
       }else{
@@ -44,6 +48,10 @@ class BackgroundBtn{
   void checkBtn2Clicked(){
     if(mouseX > x2 - 40 && mouseX < x2 + 40 && 
     mouseY > y2 - 35 && mouseY < y2 + 35){
+      if(!btnSound.isPlaying()){
+        btnSound.cueFrame(0);
+        btnSound.play();
+      }
       if(changeLS == false){
         changeLS = true;
       }else{

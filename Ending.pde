@@ -20,7 +20,7 @@ void setEndingScreen(){
   CreatureImgYpos=height-200;
   creatureSize=400; 
   setCreature();
-  
+   
   creatureSound=new SoundFile[8];
   for(int i=0;i<8;i++){
     creatureSound[i]=new SoundFile(this,"creatureSound"+i+".mp3");
@@ -72,4 +72,8 @@ void creatureEnding(){
     }
   }
   drawEndingScreen();
+}
+
+int getCreatureNumber(){
+  return creatureNumber;
 }

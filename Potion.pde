@@ -91,9 +91,12 @@ class Potion{
       case "BLUE":
         potionCount[2]++;
         break;
-      }
-    
+      }   
       randomKey = 0;
+      
+      if(!potionSound.isPlaying()){
+        potionSound.pause();
+      }
   }
   
   void drawPotionCountUI(){

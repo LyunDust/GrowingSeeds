@@ -15,13 +15,17 @@ class homeBtn{
     if(mouseX > bx - 45 && mouseX < bx + 45 && 
     mouseY > by - 40 && mouseY < by + 40){
       //sound play
-      if(!btnSound.isPlaying()){
-        btnSound.play();
-      }
       if(PlayScreenBgm.isPlaying()){
         PlayScreenBgm.pause();
       }
+      
+      if(!btnSound.isPlaying()){
+        btnSound.cueFrame(0);
+        btnSound.play();
+      }
+      
       if(!StartScreenBgm.isPlaying()){
+        StartScreenBgm.cueFrame(0);
         StartScreenBgm.play();
       }
       playing = false;
