@@ -154,7 +154,7 @@ void mousePressed(){
   } 
   }
   
-  if(mouseButton == RIGHT){
+  if(mouseButton == RIGHT && !(playing == false && EndingMode == false)){
     if (shouldList == false){
       shouldList = true;
     }
