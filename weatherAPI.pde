@@ -11,7 +11,6 @@ void setTimeWithAPI(){
   sunriseTime = json.getJSONObject("sys").getInt("sunrise");
   sunsetTime = json.getJSONObject("sys").getInt("sunset");
   currentTime = date.getTime()/1000;
-  //currentTime = json.getInt("dt"); //"dt" dosen't show time in real time...
 }
 
 void checkStartTime(){
