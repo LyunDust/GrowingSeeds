@@ -168,6 +168,7 @@ void mousePressed(){
 void SettingOff(){  //Reset settings used in gameplay
     creditBtn.drawButton();    
     timeCheck = false;
+    moveCreature=false;
     WaterNum = 0;
     waterGage = 0;
     setCreature();
@@ -255,7 +256,7 @@ void loadGameImage(){  //Function to load required images
 void loadGameSound(){  //Function to load required sounds
 
   rainSound=new SoundFile(this,"RainSound.mp3");
-  rainSound.amp(0.2);
+  rainSound.amp(0.4);
   StartScreenBgm=new SoundFile(this,"main.mp3");
   PlayScreenBgm=new SoundFile(this,"play.mp3");
   btnSound=new SoundFile(this,"button1.mp3");

@@ -15,6 +15,7 @@ void move(){
   }else{
     moveCreature=false;
     replayNum=0;
+    angle=0;
   }  
   
 }
@@ -30,5 +31,6 @@ void jump(){
   }else{
     moveCreature=false;
     replayNum=0;
+    angle=0;
   }
 }
