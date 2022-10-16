@@ -4,6 +4,8 @@ class homeBtn{
   float bx, by;
   
   void drawBtn(){
+    //Show home button image
+    
     bx = 50;
     by = 50;
 
@@ -12,9 +14,12 @@ class homeBtn{
   }
   
   void checkBtnClicked(){
+    //Return to the start screen when the button image area is clicked
+    //Stop the background sound of the play screen, play the button sound, and turn on the background sound of the start screen.
+
     if(mouseX > bx - 45 && mouseX < bx + 45 && 
     mouseY > by - 40 && mouseY < by + 40){
-      //sound play
+
       if(PlayScreenBgm.isPlaying()){
         PlayScreenBgm.pause();
       }
@@ -28,8 +33,10 @@ class homeBtn{
         StartScreenBgm.cueFrame(0);
         StartScreenBgm.play();
       }
+      
       playing = false;
       EndingMode = false;
+      
       if(rainSound.isPlaying()){
         rainSound.pause();
       }

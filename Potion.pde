@@ -10,6 +10,8 @@ class Potion{
   int[] potionCount = {0, 0, 0};
   
   void setRandom(){
+    //Randomly set the position, key to press, and color of the potion
+
     x = random(70, width-70);
     y = random(300, height-250);
     appearProb = random(1);
@@ -33,6 +35,8 @@ class Potion{
   }
   
   void drawText(){
+    //Draw the text of the key to press
+    
     fill(0);
     //textSize(40);
     textFont(potionFont);
@@ -45,6 +49,8 @@ class Potion{
   }
   
   void drawPotionIMG(){
+    //draw potion image
+    
     imageMode(CENTER);
     image(potionIMG, x, y, potionSize, potionSize);
   }
@@ -79,6 +85,9 @@ class Potion{
 }
 
   void countPotion(){
+      //Count the number of potions user get
+      //When the potion is acquired, the potion sound is paused
+
       potionShow = false;
       theta = 0;
       switch(randomColor){
@@ -100,6 +109,8 @@ class Potion{
   }
   
   void drawPotionCountUI(){
+    //Draw the potion count UI
+    
     noStroke();
     rectMode(CORNER);
     fill(255, 200);
@@ -125,6 +136,8 @@ class Potion{
   }
   
   void drawKeyShape(){
+    //Draw a key-shaped speech bubble that shows the key to press
+
     stroke(0);
     strokeWeight(1);
     fill(255);
@@ -136,6 +149,8 @@ class Potion{
   }
   
   void clearPotion(){
+    //reset the potion system
+    
      potionShow = false;
      theta = 0;
      time = 0;

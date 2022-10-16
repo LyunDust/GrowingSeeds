@@ -8,6 +8,8 @@ Amplitude analyzer;
 float quietLevel = 0.15;
 
 void setForJump(){
+  // set the mic for creature's jump
+  
   micSound = new AudioIn(this, 0);
   micSound.start();
   analyzer = new Amplitude(this);
@@ -15,12 +17,16 @@ void setForJump(){
 }
 
 void drawForJump(){
+  // change the creature's position according to micVolume
+  // if micVolume is loud, the creature jumps high
+  // if micVolume is quiet, the creature jumps low
+
   float micVolume = analyzer.analyze();
   
   if (micVolume > quietLevel) {
     CreatureImgYpos = height-200-(micVolume*1000);
   }
   else if (micVolume < quietLevel) {
-   CreatureImgYpos=height-200;   //[PSY] changed code
+   CreatureImgYpos=height-200;   
   }
 }

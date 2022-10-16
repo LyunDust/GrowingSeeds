@@ -4,6 +4,9 @@ PImage creatureList;
 boolean shouldList = false;
 
 void setList(){
+  // set the image of creature list
+  // call the method to draw the image of creature list
+
   background(255);
   drawList();
   
@@ -14,6 +17,10 @@ void setList(){
 }
 
 void drawList(){
+  // draw the image of creature list
+  // if there is no creature, the list is empty
+  // if there are some creature, the image of creatures are drawn
+
   int m = 0;
   for(int i=0; i<creatures.length; i++){
     if (creaturesAlive[i] == false){

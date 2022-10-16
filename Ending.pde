@@ -6,6 +6,10 @@ float CreatureImgYpos;
 int creatureSize;
 
 void setEndingScreen(){
+  // set the images and position of creatures
+  // call the current creature list
+  // load Creatures Sound
+
   creatures = new PImage[8];
   for(int i=0; i<creatures.length; i++){
     creatures[i] = loadImage("creature"+i+".png");
@@ -24,14 +28,20 @@ void setEndingScreen(){
   creatureSound=new SoundFile[8];
   for(int i=0;i<8;i++){
     creatureSound[i]=new SoundFile(this,"creatureSound"+i+".mp3");
-  } //load Creature Sound
+  } 
 }
 
 void drawEndingScreen(){
+  // call the method to draw the creature on the screen
+
   drawCreature(creatureNumber);
 }
 
 void creatureEnding(){
+  // depending on the number of potions used, the creature is confirmed randomly
+  // call the method to change the value of creature list
+  // call the method to draw the creature on the screen
+
   // No potion ending - creature 0, 1
   if (potion.potionCount[0] == potion.potionCount[1] && potion.potionCount[0] == potion.potionCount[2]){
     creatureNumber = int(random(0, 2));
@@ -72,8 +82,4 @@ void creatureEnding(){
     }
   }
   drawEndingScreen();
-}
-
-int getCreatureNumber(){
-  return creatureNumber;
 }

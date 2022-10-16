@@ -20,7 +20,7 @@ void setup(){
   size(540, 960);
   
   loadGameImage();
-  loadGameSound(); //PSY
+  loadGameSound(); 
   
   setStartScreen();
   setScreen();
@@ -42,6 +42,10 @@ void setup(){
 }
 
 void draw(){
+  //If both playing and EndingMode are false, the start screen
+  //else If playing is true and EndingMode is false, the game play screen
+  //else If playing is false and EndingMode is true, the ending screen
+  
   background(255);
   
   if (playing == true && EndingMode == false){
@@ -81,7 +85,7 @@ void draw(){
     backgroundBtn.drawBtn();
     homeButton.drawBtn();
     drawScreen();
-    SoundInEnding(getCreatureNumber());
+    SoundInEnding(creatureNumber);
     if(timeCheck == false){
       checkStartTime();
     }
@@ -93,14 +97,19 @@ void draw(){
 }
 
 void keyPressed(){
+  //If the random key matches the key pressed by the user, the potion is removed from the screen and the potion is counted 
+  //and potion sound plays
+  
   if(playing == true && EndingMode == false && potion.randomKey == key && potion.randomKey != 0){
-    //sound play
     potionSound.playFor(1000);
     potion.countPotion();
   }
 }
 
 void mouseClicked(){
+  //In StartScreen, start button and credit button are shown and can be clicked
+  //In PlayScreen, background button and home button are shown and can be clicked
+  
   if(mouseButton == LEFT && shouldList == false){
   if(playing == false && EndingMode == false){
     creditBtn.checkBtnClicked();
@@ -113,12 +122,18 @@ void mouseClicked(){
 }
 
 void mouseReleased(){
+  //When you release your hand from the mouse, pause the sound of the button.
+  //(Conditions for pause sound)
+  
   if(btnSound.isPlaying()){
     btnSound.pause();
   }
 }
     
 void mousePressed(){
+  //When it's playing, you can click on the cloud with your mouse
+  //When it's ending, you can click the creature with your mouse
+  //If you right-click, you can see the Creature list
   
   if(mouseButton == LEFT && shouldList == false){
     if(playing == true && EndingMode == false &&
@@ -150,12 +165,12 @@ void mousePressed(){
   }
 }
 
-void SettingOff(){
+void SettingOff(){  //Reset settings used in gameplay
     creditBtn.drawButton();    
     timeCheck = false;
     WaterNum = 0;
     waterGage = 0;
-    //savedTime = millis();
+    setCreature();
     
     if(showCredit == true){
       creditBtn.showCredit();
@@ -166,9 +181,10 @@ void SettingOff(){
     potion.clearPotion();
 }
 
-void decideEnding(){ //Must be checked within draw()
+void decideEnding(){ 
+  //If the number of rains is 15, the seed changes to creature the ending mode.
 
-  if(WaterNum>=5){
+  if(WaterNum>=15){
     playing=false;
     EndingMode=true;   
     savedTime=millis();
@@ -176,15 +192,15 @@ void decideEnding(){ //Must be checked within draw()
 }
 
 void drawInPlayMode(){   
-  //background(255);
+  //draw cloud and seed
+  // Every time a cloud is clicked, it rains, and counts the number of times it rains.
+  
   imageMode(CENTER);
-  //draw rain->draw background every time!!
 
   image(cloud,width/2,180,340,340);
   image(seed,width/2,height-180,200,200);
   
   if(CloudClicked){  
-    println(WaterNum);
     
     if(gage == true){
       waterGage += 1;
@@ -207,6 +223,9 @@ void drawInPlayMode(){
 }
 
 void SoundInEnding(int n){
+  //Play different sounds depending on the creature type
+  //The ending starts and plays the sound for only one second
+  
   passedTime=millis()-savedTime;
   
   if(passedTime<=1000){
@@ -220,7 +239,8 @@ void SoundInEnding(int n){
   }
 }
 
-void loadGameImage(){
+void loadGameImage(){  //Function to load required images
+
   backgroundBtn.BackgroundIMG0 = loadImage("background0.png");
   backgroundBtn.BackgroundIMG1 = loadImage("background1.png");
   backgroundBtn.BackgroundIMG2 = loadImage("background2.png");
@@ -232,7 +252,8 @@ void loadGameImage(){
   creditBtn.makeButton();
 }
 
-void loadGameSound(){  //Loading required sound during gameplay
+void loadGameSound(){  //Function to load required sounds
+
   rainSound=new SoundFile(this,"RainSound.mp3");
   rainSound.amp(0.2);
   StartScreenBgm=new SoundFile(this,"main.mp3");

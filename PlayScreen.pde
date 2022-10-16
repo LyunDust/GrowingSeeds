@@ -3,6 +3,9 @@
 PImage[] background;
 
 void setScreen(){
+  // call the method to set the images and position of creatures
+  // set the background image
+  
   setEndingScreen();
   background = new PImage[4];
   for(int i=0; i<background.length; i++){
@@ -11,6 +14,10 @@ void setScreen(){
 }
 
 void drawScreen(){
+  // draw the screen included UI and creature
+  // if it is not ending, call the method to draw UI
+  // if it is ending, call the method to confirm the creature randomly
+
   if (playing == true && EndingMode == false){
     drawUI();
   }
@@ -20,6 +27,9 @@ void drawScreen(){
 }
 
 void drawUI(){
+  // draw the gage bar of waterNum
+  // as waternum increases, the gage goes up
+  
   waterGage = constrain(waterGage, 0, 15);
   stroke(255);
   strokeWeight(15);

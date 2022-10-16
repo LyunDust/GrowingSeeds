@@ -9,6 +9,8 @@ class Credit{
   }
   
   void drawButton(){
+    //Show credit and start button image
+    
     x1 = width/2;
     y1 = height/2 + 320;
     imageMode(CENTER);
@@ -20,6 +22,9 @@ class Credit{
   }
   
   void checkBtnClicked(){
+    //Check whether each button image area is clicked
+    //If it is credit button, show the credit and tint the button
+    //If it is start button, start the game
     
     if(mouseX > x1 - 85 && mouseX < x1 + 85 && 
     mouseY > y1 - 40 && mouseY < y1 + 40){
@@ -49,6 +54,8 @@ class Credit{
   }
   
   void showCredit(){
+    //Draw the credit window and content
+    
     stroke(0);
     strokeWeight(1);
     fill(255, 255);

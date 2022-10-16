@@ -5,6 +5,7 @@ class BackgroundBtn{
   Boolean changeBG, changeLS = false;
   
   void drawBtn(){
+    //After showing the background image according to the condition, draw two buttons that change the background
     
     changeBackground();
     
@@ -23,6 +24,8 @@ class BackgroundBtn{
   }
   
   void checkTime(){
+    //Sets the background based on the current time
+
     if(currentTime >= sunsetTime || currentTime < sunriseTime){
       changeBG = true; 
     }else{
@@ -31,6 +34,9 @@ class BackgroundBtn{
   }
   
   void checkBtn1Clicked(){
+    //Clicking on the image area of the changeDN button changes time in the background
+    //When the button is clicked, it plays the clicking sound.
+
     if(mouseX > x1 - 40 && mouseX < x1 + 40 && 
     mouseY > y1 - 35 && mouseY < y1 + 35){
       if(!btnSound.isPlaying()){
@@ -46,6 +52,9 @@ class BackgroundBtn{
   }
   
   void checkBtn2Clicked(){
+    //Clicking on the image area of the landscapeBtn button changes the landscape in the background
+    //When the button is clicked, it plays the clicking sound.
+
     if(mouseX > x2 - 40 && mouseX < x2 + 40 && 
     mouseY > y2 - 35 && mouseY < y2 + 35){
       if(!btnSound.isPlaying()){
@@ -61,6 +70,8 @@ class BackgroundBtn{
   }
   
   void changeBackground(){
+    //Determine the background to be finally seen according to the conditions
+
     imageMode(CENTER);
     
     if(changeBG == true && changeLS == true){

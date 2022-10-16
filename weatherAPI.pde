@@ -6,6 +6,8 @@ long sunriseTime, sunsetTime, currentTime;
 Date date = new Date();
 
 void setTimeWithAPI(){
+  //Receives the time of sunset and sunrise from the weather API and the current time from the date variable.
+  
   sunriseTime = json.getJSONObject("sys").getInt("sunrise");
   sunsetTime = json.getJSONObject("sys").getInt("sunset");
   currentTime = date.getTime()/1000;
@@ -13,13 +15,16 @@ void setTimeWithAPI(){
 }
 
 void checkStartTime(){
+  //Check the current time when the game starts again
+  
   date = new Date();
   currentTime = date.getTime()/1000;     
   timeCheck = true;
 }
 
-//get string from file
 void loadFileString(){
+  //get string from file
+  
   for(int i = 0; i < API_KEY.length; i++){
     URL += API_KEY[i];
   }
