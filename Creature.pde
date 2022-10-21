@@ -29,6 +29,16 @@ void setCreature(int n){
   // change the value of creature list
   // call the method to set the mic for creature's jump
   
+  if(n == 1 || n == 4 || n == 5){
+   changeY = 280;
+  }else if(n == 2 || n == 3 || n == 7){
+   changeY = 220;
+  }else{
+   changeY = 200;
+  }
+  
+  CreatureImgYpos = height-changeY;
+  
   creaturesAlive[n] = true;
   currentCreaturesAlive[n] = true;
   setForJump();

@@ -24,9 +24,9 @@ void drawForJump(){
   float micVolume = analyzer.analyze();
   
   if (micVolume > quietLevel) {
-    CreatureImgYpos = height-200-(micVolume*1000);
+    CreatureImgYpos = height-changeY-(micVolume*1000);
   }
   else if (micVolume < quietLevel) {
-   CreatureImgYpos=height-200;   
+   CreatureImgYpos = height-changeY; 
   }
 }

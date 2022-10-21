@@ -3,7 +3,7 @@
 boolean moveCreature=false;
 float CreatureImgXpos;
 float CreatureImgYpos;
-int creatureSize;
+int creatureSize, changeY = 250;
 
 void setEndingScreen(){
   // set the images and position of creatures
@@ -21,7 +21,7 @@ void setEndingScreen(){
   }
   
   CreatureImgXpos=width/2;
-  CreatureImgYpos=height-200;
+  CreatureImgYpos=height-changeY;
   creatureSize=400; 
   setCreature();
    

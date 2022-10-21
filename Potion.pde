@@ -39,7 +39,7 @@ class Potion{
     
     fill(0);
     //textSize(40);
-    textFont(potionFont);
+    textFont(playFont);
     textAlign(CENTER);
     if(randomKey == 'd'){
       text(randomKey, x, y-97);
@@ -114,25 +114,25 @@ class Potion{
     noStroke();
     rectMode(CORNER);
     fill(255, 200);
-    rect(20, height-170, 95, 140, 20);
+    rect(20, height-200, 95, 140, 20);
     
-    textFont(potionFont);
+    textFont(playFont);
     textAlign(CENTER);
     textSize(20);
     fill(0);
-    text("potion", 20+50, height-145);
+    text("potion", 20+50, height-175);
     
     fill(255, 66, 53);
-    rect(35, height-130, 40, 20, 10);
+    rect(35, height-160, 40, 20, 10);
     fill(32, 233, 78);
-    rect(35, height-100, 40, 20, 10);
+    rect(35, height-130, 40, 20, 10);
     fill(38, 157, 254);
-    rect(35, height-70, 40, 20, 10);
+    rect(35, height-100, 40, 20, 10);
     
     fill(0);
-    text(": "+potionCount[0], 20+70, height-115);
-    text(": "+potionCount[1], 20+70, height-85);
-    text(": "+potionCount[2], 20+70, height-55);
+    text(": "+potionCount[0], 20+70, height-145);
+    text(": "+potionCount[1], 20+70, height-115);
+    text(": "+potionCount[2], 20+70, height-85);
   }
   
   void drawKeyShape(){

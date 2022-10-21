@@ -69,6 +69,7 @@ void draw(){
       potion.tempTime = millis();
       potion.time = millis() - potion.startTime;
       potion.randomPotion();
+      psText();
     }else{
       potion.pauseTime = millis()-potion.tempTime;
     }
@@ -77,6 +78,7 @@ void draw(){
     if (shouldList == true){
       setList();
     }
+    
   }
   else if(playing == false && EndingMode == false){
     drawStartScreen();
@@ -92,6 +94,7 @@ void draw(){
     if (shouldList == true){
       setList();
     }
+    esText();
   }
   
 }
@@ -180,6 +183,9 @@ void SettingOff(){  //Reset settings used in gameplay
     backgroundBtn.checkTime();
     backgroundBtn.changeLS = false;
     potion.clearPotion();
+    
+    textX = width;
+    textIndex = 0;
 }
 
 void decideEnding(){ 
@@ -189,6 +195,8 @@ void decideEnding(){
     playing=false;
     EndingMode=true;   
     savedTime=millis();
+    textX = width;
+    textIndex = 0;
   }
 }
 

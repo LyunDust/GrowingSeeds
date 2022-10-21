@@ -1,13 +1,13 @@
 //Owner: Kim Hyeri
 
 PFont titleFont;
-PFont potionFont;
+PFont playFont;
 
 void setStartScreen(){
   // set the font for title and potion
   
   titleFont = loadFont("CabinSketch-Bold-100.vlw");
-  potionFont = loadFont("LucidaSans-40.vlw");
+  playFont = loadFont("LucidaSans-40.vlw");
 }
 
 void drawStartScreen(){
