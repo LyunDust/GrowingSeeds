@@ -8,6 +8,19 @@ void setList(){
   // call the method to draw the image of creature list
 
   background(255);
+  
+  fill(255, 131, 131);
+  noStroke();
+  rect(0, height/4 + 100, width, 200);
+  
+  fill(165, 222, 159);
+  noStroke();
+  rect(0, height/4 * 2 + 30, width, 180);
+  
+  fill(139, 189, 255);
+  noStroke();
+  rect(0, height/4 * 3, width, 200);
+  
   drawList();
   
   creatureList = loadImage("List.png");
