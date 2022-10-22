@@ -9,6 +9,8 @@ void setList(){
 
   background(255);
   
+  rectMode(CORNER);
+  
   fill(255, 131, 131);
   noStroke();
   rect(0, height/4 + 100, width, 200);
