@@ -11,7 +11,7 @@ String[] EndingScreenText = {
 int textIndex = 0;
 float textX = width, tW;
 
-void psText(){
+void psText(){ //Make sure the instructions come out on the play screen and move
   textFont(playFont, 20);
   textAlign(LEFT);
   fill(255);
@@ -27,7 +27,7 @@ void psText(){
   }
 }
 
-void esText(){
+void esText(){ //Make sure the instructions come out on the ending screen and move
   textFont(playFont, 20);
   textAlign(LEFT);
   fill(255);
